@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Siyuu | Developer Portfolio</title>
+<title>Siyuu | Portfolio</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
@@ -15,16 +14,16 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-background:#04040c;
+background:#02020a;
 color:white;
 font-family:Poppins;
-overflow-x:hidden;
 }
+
 #particles-js{position:fixed;inset:0;z-index:-1}
 
 /* HERO */
 .hero{
-min-height:100vh;
+height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -32,7 +31,7 @@ align-items:center;
 }
 .name{
 font-family:Orbitron;
-font-size:64px;
+font-size:70px;
 background:var(--grad);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -42,64 +41,50 @@ animation:float 3s infinite;
 
 /* SECTION */
 .section{
-max-width:1100px;
-margin:90px auto;
+max-width:1000px;
+margin:100px auto;
 padding:20px;
 }
 .card{
-background:rgba(25,25,40,.7);
-backdrop-filter:blur(15px);
-padding:35px;
+background:rgba(20,20,40,.75);
+padding:30px;
 border-radius:25px;
-box-shadow:0 0 35px #00dbde66;
+box-shadow:0 0 40px #00dbde88;
 margin-bottom:40px;
 }
-.card h2{
-font-family:Orbitron;
+
+/* SKILLS */
+.skill{margin-bottom:18px}
+.bar{
+height:14px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+}
+.fill{
+height:100%;
+width:0;
 background:var(--grad);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-margin-bottom:20px;
+box-shadow:0 0 20px #00dbde;
+transition:2s;
 }
 
 /* PROJECTS */
 .projects{
 display:flex;
-gap:25px;
+gap:20px;
 overflow-x:auto;
 }
 .project{
-min-width:260px;
-padding:25px;
+min-width:240px;
+padding:22px;
 border-radius:20px;
-background:#151525;
+background:#14142a;
 box-shadow:0 0 25px #00dbde66;
-cursor:pointer;
 transition:.4s;
 text-align:center;
-font-weight:600;
 }
-.project:hover{
-transform:scale(1.12);
-box-shadow:0 0 40px #00dbde;
-}
-
-/* MUSIC BUTTON */
-#musicBtn{
-position:fixed;
-right:20px;
-bottom:20px;
-width:65px;
-height:65px;
-border-radius:50%;
-background:var(--grad);
-border:none;
-color:white;
-font-size:26px;
-cursor:pointer;
-box-shadow:0 0 30px #00dbde;
-z-index:99;
-}
+.project:hover{transform:scale(1.12)}
 
 </style>
 </head>
@@ -114,76 +99,43 @@ z-index:99;
 <section class="section">
 
 <div class="card">
+<h2>Skills</h2>
+
+<div class="skill">JavaScript<div class="bar"><div class="fill" data="90%"></div></div></div>
+<div class="skill">Node.js<div class="bar"><div class="fill" data="85%"></div></div></div>
+<div class="skill">HTML & CSS<div class="bar"><div class="fill" data="80%"></div></div></div>
+
+</div>
+
+<div class="card">
 <h2>Projects</h2>
 <div class="projects">
-
-<div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">
-Messenger GoatBot
-</div>
-
-<div class="project">
-GoatBot Dev
-</div>
-
-<div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">
-Instagram GoatBot
-</div>
-
-<div class="project">
-API System
-</div>
-
+<div class="project">Messenger GoatBot</div>
+<div class="project">GoatBot Dev</div>
+<div class="project">Instagram GoatBot</div>
+<div class="project">API System</div>
 </div>
 </div>
 
 </section>
 
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
-<source src="https://i.imgur.com/NqMmnL7.mp4">
-</audio>
-
-<button id="musicBtn"><i class="fa fa-music"></i></button>
-
 <script>
 
-/* PARTICLES */
 particlesJS("particles-js",{
 particles:{
-number:{value:80},
+number:{value:90},
 color:{value:"#00dbde"},
 move:{speed:2},
 line_linked:{enable:true,color:"#00dbde"}
 }
 });
 
-/* LINKS */
-function openLink(url){
-window.open(url,"_blank");
-}
-
-/* MUSIC SYSTEM */
-const music=document.getElementById("bgMusic");
-const btn=document.getElementById("musicBtn");
-let playing=false;
-
-document.body.addEventListener("click",()=>{
-if(!playing){
-music.play();
-playing=true;
-}
+/* SKILL ANIMATION */
+document.querySelectorAll(".fill").forEach(bar=>{
+setTimeout(()=>{
+bar.style.width=bar.getAttribute("data");
+},800);
 });
-
-btn.onclick=(e)=>{
-e.stopPropagation();
-if(playing){
-music.pause();
-playing=false;
-}else{
-music.play();
-playing=true;
-}
-};
 
 </script>
 
