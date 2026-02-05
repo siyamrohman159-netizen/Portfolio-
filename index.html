@@ -69,7 +69,7 @@ animation:drip 2s infinite;
 @keyframes pulse{50%{text-shadow:0 0 25px #ff4444,0 0 70px red}}
 
 /* SECTIONS */
-.section{max-width:1000px;margin:50px auto;padding:20px;}
+.section{max-width:1000px;margin:50px auto;padding:20px;opacity:0;transform:translateY(50px);transition:all 1s ease-out;}
 
 /* CARDS */
 .card{
@@ -78,6 +78,9 @@ padding:30px;
 border-radius:25px;
 box-shadow:0 0 40px #00dbde88;
 margin-bottom:40px;
+opacity:0;
+transform:translateY(50px);
+transition:all 1s ease-out;
 }
 
 /* LOADING BAR */
@@ -100,6 +103,9 @@ border-radius:20px;
 margin-bottom:30px;
 text-align:center;
 box-shadow:0 0 25px #00dbde66;
+opacity:0;
+transform:translateY(50px);
+transition:all 1s ease-out;
 }
 .about-box h2{margin-bottom:15px;}
 .about-box p{line-height:1.6;}
@@ -128,6 +134,9 @@ border-radius:20px;
 margin-bottom:30px;
 box-shadow:0 0 25px #00dbde66;
 line-height:1.5;
+opacity:0;
+transform:translateY(50px);
+transition:all 1s ease-out;
 }
 
 /* PROJECTS */
@@ -155,6 +164,9 @@ display:flex;
 justify-content:center;
 gap:20px;
 margin-top:20px;
+opacity:0;
+transform:translateY(50px);
+transition:all 1s ease-out;
 }
 .socials i{
 font-size:28px;
@@ -203,6 +215,14 @@ box-shadow:0 0 30px #00dbde;
 <div class="about-box">
 <h2>About Me</h2>
 <p>I am a GoatBot Developer. I specialize in Node.js, HTML, CSS, and Python.</p>
+<p>Command Creator: I develop creative commands for bots to automate tasks.</p>
+<p>Node.js Editor: Skilled in building and maintaining robust backend systems.</p>
+<p>Front-end Designer: Creating responsive and interactive layouts.</p>
+<p>Python Enthusiast: Automating processes, building scripts, and bots.</p>
+<p>API Integrator: Connecting different services for seamless bot experience.</p>
+<p>Problem Solver: Fixing issues and improving bot efficiency daily.</p>
+<p>Creative Thinker: Experimenting with fun features and unique solutions.</p>
+<p>Lifelong Learner: Always exploring new tech and programming tricks!</p>
 </div>
 
 <!-- SKILLS -->
@@ -274,6 +294,9 @@ document.getElementById("loading-container").style.display="none";
 document.querySelectorAll(".fill").forEach(bar=>{
 setTimeout(()=>bar.style.width=bar.getAttribute("data"),300);
 });
+
+/* SCROLL ANIMATION INIT */
+fadeInOnScroll();
 }
 },30);
 
@@ -292,6 +315,22 @@ e.stopPropagation();
 playing?music.pause():music.play();
 playing=!playing;
 };
+
+/* SCROLL ANIMATION FUNCTION */
+function fadeInOnScroll(){
+const sections = document.querySelectorAll(".section, .card, .about-box, .skill-desc, .socials");
+function checkFade(){
+sections.forEach(el=>{
+const rect = el.getBoundingClientRect();
+if(rect.top < window.innerHeight - 100){
+el.style.opacity = 1;
+el.style.transform = 'translateY(0)';
+}
+});
+}
+checkFade();
+window.addEventListener('scroll', checkFade);
+}
 </script>
 
 </body>
