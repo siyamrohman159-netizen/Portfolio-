@@ -25,6 +25,7 @@ flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
+padding-top:50px;
 }
 .hero img{
 width:220px;
@@ -33,14 +34,23 @@ padding:5px;
 background:var(--grad);
 box-shadow:0 0 40px #00dbde;
 }
-.logo{
-font-family:Orbitron;
-font-size:70px;
-margin-top:20px;
-background:var(--grad);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:float 3s infinite;
+/* Full Name */
+.full-name{
+  font-family:Orbitron;
+  font-size:48px;
+  margin-top:20px;
+  color:white;
+  text-align:center;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.full-name span{margin:0 5px;}
+.full-name .logo{
+  background:var(--grad);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:float 3s infinite;
 }
 @keyframes float{50%{transform:translateY(-15px)}}
 
@@ -205,8 +215,12 @@ box-shadow:0 0 30px #00dbde;
 
 <section class="hero">
 <img src="https://i.imgur.com/guUKCj0.jpeg">
-<div class="logo">SIYUU</div>
-<div class="bloody-name">SHAHARIYA AHMMED SIYAM (SIYUUU)</div>
+<div class="full-name">
+  <span>SHAHARIYA AHMMED SIYAM (</span>
+  <span class="logo">SIYUUU</span>
+  <span>)</span>
+</div>
+<div class="bloody-name">GoatBot Developer</div>
 </section>
 
 <section class="section">
@@ -318,13 +332,17 @@ playing=!playing;
 
 /* SCROLL ANIMATION FUNCTION */
 function fadeInOnScroll(){
-const sections = document.querySelectorAll(".section, .card, .about-box, .skill-desc, .socials");
+const sections = document.querySelectorAll(".section, .card, .about-box, .skill-desc, .socials, .hero");
 function checkFade(){
 sections.forEach(el=>{
 const rect = el.getBoundingClientRect();
-if(rect.top < window.innerHeight - 100){
+if(rect.top < window.innerHeight - 50){
 el.style.opacity = 1;
 el.style.transform = 'translateY(0)';
+el.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+} else {
+el.style.opacity = 0;
+el.style.transform = 'translateY(50px)';
 }
 });
 }
@@ -334,4 +352,4 @@ window.addEventListener('scroll', checkFade);
 </script>
 
 </body>
-</html>
+  </html>
