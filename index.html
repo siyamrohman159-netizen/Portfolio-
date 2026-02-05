@@ -6,32 +6,44 @@
 <title>Siyuu | Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <style>
-:root{
---grad:linear-gradient(135deg,#00dbde,#fc00ff);
-}
+:root{--grad:linear-gradient(135deg,#00dbde,#fc00ff);}
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
 background:#02020a;
 color:white;
 font-family:Poppins;
+overflow-x:hidden;
 }
 
 #particles-js{position:fixed;inset:0;z-index:-1}
 
 /* HERO */
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
+text-align:center;
 }
-.name{
+
+.hero img{
+width:220px;
+border-radius:50%;
+padding:5px;
+background:var(--grad);
+box-shadow:0 0 40px #00dbde;
+}
+
+.logo{
 font-family:Orbitron;
 font-size:70px;
+margin-top:20px;
 background:var(--grad);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -39,7 +51,38 @@ animation:float 3s infinite;
 }
 @keyframes float{50%{transform:translateY(-15px)}}
 
-/* SECTION */
+/* BLOODY NAME */
+.bloody-name{
+margin-top:12px;
+font-size:32px;
+font-weight:900;
+letter-spacing:2px;
+color:#ff1b1b;
+text-shadow:0 0 15px red,0 0 40px darkred;
+position:relative;
+animation:pulse 2s infinite;
+}
+.bloody-name:after{
+content:"";
+position:absolute;
+left:10%;
+top:100%;
+width:4px;height:18px;
+background:#ff1b1b;
+box-shadow:40px 8px red,90px 15px red,150px 6px red,210px 14px red;
+animation:drip 2s infinite;
+}
+
+@keyframes drip{
+0%{height:6px}
+50%{height:24px}
+100%{height:6px}
+}
+@keyframes pulse{
+50%{text-shadow:0 0 25px #ff4444,0 0 70px red}
+}
+
+/* SECTIONS */
 .section{
 max-width:1000px;
 margin:100px auto;
@@ -83,8 +126,25 @@ background:#14142a;
 box-shadow:0 0 25px #00dbde66;
 transition:.4s;
 text-align:center;
+cursor:pointer;
+font-weight:600;
 }
 .project:hover{transform:scale(1.12)}
+
+/* MUSIC BTN */
+#musicBtn{
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;height:65px;
+border-radius:50%;
+background:var(--grad);
+border:none;
+color:white;
+font-size:26px;
+cursor:pointer;
+box-shadow:0 0 30px #00dbde;
+}
 
 </style>
 </head>
@@ -93,31 +153,46 @@ text-align:center;
 <div id="particles-js"></div>
 
 <section class="hero">
-<div class="name">SIYUU</div>
+<img src="https://i.imgur.com/guUKCj0.jpeg">
+<div class="logo">SIYUU</div>
+<div class="bloody-name">SHAHARIYA AHMMED SIYAM (SIYUUU)</div>
 </section>
 
 <section class="section">
 
 <div class="card">
 <h2>Skills</h2>
-
 <div class="skill">JavaScript<div class="bar"><div class="fill" data="90%"></div></div></div>
 <div class="skill">Node.js<div class="bar"><div class="fill" data="85%"></div></div></div>
 <div class="skill">HTML & CSS<div class="bar"><div class="fill" data="80%"></div></div></div>
-
 </div>
 
 <div class="card">
 <h2>Projects</h2>
 <div class="projects">
-<div class="project">Messenger GoatBot</div>
+
+<div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">
+Messenger GoatBot
+</div>
+
 <div class="project">GoatBot Dev</div>
-<div class="project">Instagram GoatBot</div>
+
+<div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">
+Instagram GoatBot
+</div>
+
 <div class="project">API System</div>
+
 </div>
 </div>
 
 </section>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="https://i.imgur.com/NqMmnL7.mp4">
+</audio>
+<button id="musicBtn"><i class="fa fa-music"></i></button>
 
 <script>
 
@@ -130,12 +205,28 @@ line_linked:{enable:true,color:"#00dbde"}
 }
 });
 
-/* SKILL ANIMATION */
 document.querySelectorAll(".fill").forEach(bar=>{
-setTimeout(()=>{
-bar.style.width=bar.getAttribute("data");
-},800);
+setTimeout(()=>bar.style.width=bar.getAttribute("data"),800);
 });
+
+function openLink(url){
+window.open(url,"_blank");
+}
+
+/* MUSIC */
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
+let playing=false;
+
+document.body.addEventListener("click",()=>{
+if(!playing){music.play();playing=true;}
+});
+
+btn.onclick=(e)=>{
+e.stopPropagation();
+playing?music.pause():music.play();
+playing=!playing;
+};
 
 </script>
 
