@@ -12,24 +12,26 @@
 <style>
 :root{
 --grad:linear-gradient(135deg,#00dbde,#fc00ff);
+--gold:linear-gradient(45deg,#FFD700,#FFA500);
 --red:#ff1b1b;
+--bg-dark:#0a0a1f;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
-background:#02020a;
+background:var(--bg-dark);
 color:white;
 font-family:Poppins;
 overflow-x:hidden;
 }
 
+/* PARTICLES */
 #particles-js{position:fixed;inset:0;z-index:-1}
 
 /* LOADER */
 #loader{
 position:fixed;
 inset:0;
-background:#02020a;
+background:var(--bg-dark);
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -87,36 +89,25 @@ margin-top:12px;
 font-size:34px;
 font-weight:900;
 letter-spacing:2px;
-color:var(--red);
-text-shadow:0 0 15px red,0 0 50px darkred;
+color:#ff5555;
+text-shadow:0 0 25px #ff5555,0 0 50px darkred;
 position:relative;
 animation:pulse 2s infinite;
 }
-.bloody-name:after{
-content:"";
-position:absolute;
-left:10%;
-top:100%;
-width:4px;height:18px;
-background:var(--red);
-box-shadow:40px 10px red,90px 16px red,150px 8px red,210px 15px red;
-animation:drip 2s infinite;
-}
-@keyframes drip{50%{height:25px}}
-@keyframes pulse{50%{text-shadow:0 0 30px red,0 0 80px darkred}}
+@keyframes pulse{50%{text-shadow:0 0 40px #ff5555,0 0 90px darkred}}
 
 /* SECTIONS */
 .section{
 max-width:1100px;
-margin:90px auto;
+margin:80px auto;
 padding:20px;
 }
 .card{
-background:rgba(25,25,45,.75);
+background:rgba(30,30,50,.85);
 padding:35px;
 border-radius:25px;
 box-shadow:0 0 40px #00dbde88;
-margin-bottom:45px;
+margin-bottom:50px;
 }
 .card h2{
 font-family:Orbitron;
@@ -126,20 +117,26 @@ background:var(--grad);
 margin-bottom:20px;
 }
 
+/* ABOUT */
+.card p{
+line-height:1.7;
+font-size:16px;
+}
+
 /* SKILLS */
 .skill{margin-bottom:18px}
 .bar{
-height:14px;
+height:16px;
 background:#111;
-border-radius:20px;
+border-radius:25px;
 overflow:hidden;
 }
 .fill{
 height:100%;
 width:0;
 background:var(--grad);
-box-shadow:0 0 20px #00dbde;
-transition:2s;
+box-shadow:0 0 25px #00dbde;
+transition:2s cubic-bezier(.17,.67,.83,.67);
 }
 
 /* PROJECTS */
@@ -152,14 +149,15 @@ overflow-x:auto;
 min-width:260px;
 padding:25px;
 border-radius:20px;
-background:#14142a;
-box-shadow:0 0 25px #00dbde66;
+background:rgba(255,215,0,0.15);
+border:2px solid #FFD700;
+box-shadow:0 0 25px #FFD70066;
 transition:.4s;
 text-align:center;
 cursor:pointer;
 font-weight:600;
 }
-.project:hover{transform:scale(1.12)}
+.project:hover{transform:scale(1.12);box-shadow:0 0 40px #FFD700}
 
 /* CONTACT */
 .contact{
@@ -197,6 +195,15 @@ cursor:pointer;
 box-shadow:0 0 30px #00dbde;
 }
 
+/* SCROLLBAR */
+.projects::-webkit-scrollbar{
+height:8px;
+}
+.projects::-webkit-scrollbar-thumb{
+background:#00dbde;
+border-radius:4px;
+}
+
 </style>
 </head>
 <body>
@@ -219,7 +226,8 @@ box-shadow:0 0 30px #00dbde;
 
 <div class="card">
 <h2>About Me</h2>
-<p>I develop Messenger bots, automation systems and modern web interfaces using Node.js and frontend technologies.</p>
+<p>I'm a Messenger GoatBot developer, building automation systems and modern web interfaces. I work extensively with <b>Node.js, HTML, CSS, Python, Express.js, MongoDB</b>.</p>
+<p>With Node.js I create backend bots and APIs. HTML/CSS helps me design responsive frontends. Python is used for automation scripts and small AI projects. MongoDB & Express are used for full-stack app integration and database management.</p>
 </div>
 
 <div class="card">
@@ -227,27 +235,26 @@ box-shadow:0 0 30px #00dbde;
 <div class="skill">JavaScript<div class="bar"><div class="fill" data="90%"></div></div></div>
 <div class="skill">Node.js<div class="bar"><div class="fill" data="85%"></div></div></div>
 <div class="skill">HTML & CSS<div class="bar"><div class="fill" data="80%"></div></div></div>
+<div class="skill">Python<div class="bar"><div class="fill" data="75%"></div></div></div>
 </div>
 
 <div class="card">
 <h2>Projects</h2>
 <div class="projects">
-
 <div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">Messenger GoatBot</div>
 <div class="project">GoatBot Dev</div>
 <div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">Instagram GoatBot</div>
 <div class="project">API System</div>
-
 </div>
 </div>
 
 <div class="card">
 <h2>Contact</h2>
 <div class="contact">
-<a href="https://www.facebook.com/share/1Cu1TC1D5h/"><i class="fab fa-facebook-f"></i></a>
-<a href="https://m.me/siyuuuuuuuuuuuuuu"><i class="fab fa-facebook-messenger"></i></a>
-<a href="https://github.com/siyuuu-x1"><i class="fab fa-github"></i></a>
-<a href="https://www.instagram.com/siyuu_0.01"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-facebook-messenger"></i></a>
+<a href="#"><i class="fab fa-github"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
 </div>
 </div>
 
@@ -309,6 +316,5 @@ playing=!playing;
 };
 
 </script>
-
 </body>
-</html>
+  </html>
