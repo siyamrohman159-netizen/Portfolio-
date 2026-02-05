@@ -11,47 +11,15 @@
 
 <style>
 :root{
---neon:#00ff88;
 --grad:linear-gradient(135deg,#00dbde,#fc00ff);
---dark:#04040c;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-background:radial-gradient(circle at top,#09091c,#000);
+background:#04040c;
 color:white;
 font-family:Poppins;
 overflow-x:hidden;
 }
-
-/* LOADER */
-#loader{
-position:fixed;inset:0;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-background:#020208;
-z-index:9999;
-}
-.loader-ring{
-width:150px;height:150px;
-border-radius:50%;
-border:6px solid transparent;
-border-top:6px solid #00dbde;
-border-right:6px solid #fc00ff;
-animation:spin 1s linear infinite;
-box-shadow:0 0 40px #00dbde,0 0 80px #fc00ff;
-}
-#percent{
-font-family:Orbitron;
-font-size:36px;
-margin-top:25px;
-color:var(--neon);
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-#loader.hide{opacity:0;pointer-events:none;transition:1s}
-
-/* BACKGROUND */
 #particles-js{position:fixed;inset:0;z-index:-1}
 
 /* HERO */
@@ -59,55 +27,32 @@ color:var(--neon);
 min-height:100vh;
 display:flex;
 flex-direction:column;
-align-items:center;
 justify-content:center;
-text-align:center;
-}
-.hero img{
-width:230px;
-border-radius:50%;
-padding:6px;
-background:var(--grad);
-box-shadow:0 0 50px #00dbde;
+align-items:center;
 }
 .name{
 font-family:Orbitron;
 font-size:64px;
-margin-top:25px;
 background:var(--grad);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:float 3s ease-in-out infinite;
+animation:float 3s infinite;
 }
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-16px)}
-}
-.role{
-color:var(--neon);
-font-size:22px;
-margin-top:12px;
-}
+@keyframes float{50%{transform:translateY(-15px)}}
 
-/* SECTIONS */
+/* SECTION */
 .section{
 max-width:1100px;
-margin:100px auto;
+margin:90px auto;
 padding:20px;
 }
 .card{
-background:rgba(25,25,40,.65);
-backdrop-filter:blur(18px);
+background:rgba(25,25,40,.7);
+backdrop-filter:blur(15px);
 padding:35px;
 border-radius:25px;
-border:1px solid rgba(0,255,136,.2);
-box-shadow:0 10px 40px #000;
+box-shadow:0 0 35px #00dbde66;
 margin-bottom:40px;
-transition:.5s;
-}
-.card:hover{
-transform:translateY(-15px);
-box-shadow:0 0 50px #00dbde;
 }
 .card h2{
 font-family:Orbitron;
@@ -117,154 +62,128 @@ background:var(--grad);
 margin-bottom:20px;
 }
 
-/* SKILLS */
-.skill{margin-bottom:18px}
-.bar{
-height:14px;
-background:#111;
-border-radius:20px;
-overflow:hidden;
-}
-.fill{
-height:100%;
-width:0;
-background:var(--grad);
-box-shadow:0 0 20px #00dbde;
-transition:2s;
-}
-
 /* PROJECTS */
 .projects{
 display:flex;
 gap:25px;
 overflow-x:auto;
-padding:15px;
 }
 .project{
 min-width:260px;
-background:#151525;
 padding:25px;
 border-radius:20px;
+background:#151525;
 box-shadow:0 0 25px #00dbde66;
+cursor:pointer;
 transition:.4s;
-}
-.project:hover{transform:scale(1.1)}
-
-/* SOCIAL */
-.social{
-display:flex;
-justify-content:center;
-gap:22px;
-margin-top:60px;
-}
-.social a{
-width:70px;height:70px;
-border-radius:18px;
-background:var(--grad);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-color:white;
-box-shadow:0 0 30px #00dbde;
-transition:.4s;
-}
-.social a:hover{
-transform:rotate(12deg) scale(1.2);
-}
-
-footer{
 text-align:center;
-opacity:.6;
-padding:40px;
+font-weight:600;
+}
+.project:hover{
+transform:scale(1.12);
+box-shadow:0 0 40px #00dbde;
+}
+
+/* MUSIC BUTTON */
+#musicBtn{
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;
+height:65px;
+border-radius:50%;
+background:var(--grad);
+border:none;
+color:white;
+font-size:26px;
+cursor:pointer;
+box-shadow:0 0 30px #00dbde;
+z-index:99;
 }
 
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-<div class="loader-ring"></div>
-<div id="percent">0%</div>
-</div>
-
 <div id="particles-js"></div>
 
 <section class="hero">
-<img src="https://i.imgur.com/guUKCj0.jpeg">
 <div class="name">SIYUU</div>
-<div class="role">Messenger Bot Developer</div>
 </section>
 
 <section class="section">
 
 <div class="card">
-<h2>About Me</h2>
-<p>I build Messenger bots using Node.js, design interfaces with HTML/CSS and continuously improve through real-world projects.</p>
-</div>
-
-<div class="card">
-<h2>Skills</h2>
-
-<div class="skill">JavaScript<div class="bar"><div class="fill" data="90%"></div></div></div>
-<div class="skill">Node.js<div class="bar"><div class="fill" data="85%"></div></div></div>
-<div class="skill">HTML & CSS<div class="bar"><div class="fill" data="80%"></div></div></div>
-
-</div>
-
-<div class="card">
 <h2>Projects</h2>
 <div class="projects">
-<div class="project">Messenger GoatBot</div>
-<div class="project">Auto Downloader Bot</div>
-<div class="project">Portfolio Website</div>
-<div class="project">API System</div>
+
+<div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">
+Messenger GoatBot
+</div>
+
+<div class="project">
+GoatBot Dev
+</div>
+
+<div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">
+Instagram GoatBot
+</div>
+
+<div class="project">
+API System
+</div>
+
 </div>
 </div>
 
 </section>
 
-<div class="social">
-<a href="https://www.facebook.com/share/1Cu1TC1D5h/"><i class="fab fa-facebook-f"></i></a>
-<a href="https://m.me/siyuuuuuuuuuuuuuu"><i class="fab fa-facebook-messenger"></i></a>
-<a href="https://github.com/maiko-file-01"><i class="fab fa-github"></i></a>
-<a href="https://www.instagram.com/siyuu_0.01"><i class="fab fa-instagram"></i></a>
-</div>
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="https://i.imgur.com/NqMmnL7.mp4">
+</audio>
 
-<footer>© 2026 Siyuu — All Rights Reserved</footer>
+<button id="musicBtn"><i class="fa fa-music"></i></button>
 
 <script>
-
-/* LOADER */
-let p=0;
-const percent=document.getElementById("percent");
-const loader=document.getElementById("loader");
-const load=setInterval(()=>{
-p+=Math.floor(Math.random()*4)+1;
-if(p>=100){
-p=100;
-clearInterval(load);
-setTimeout(()=>loader.classList.add("hide"),500);
-}
-percent.innerText=p+"%";
-},40);
 
 /* PARTICLES */
 particlesJS("particles-js",{
 particles:{
-number:{value:90},
-color:{value:"#00ff88"},
-size:{value:3},
+number:{value:80},
+color:{value:"#00dbde"},
 move:{speed:2},
 line_linked:{enable:true,color:"#00dbde"}
 }
 });
 
-/* SKILL ANIMATE */
-document.querySelectorAll(".fill").forEach(bar=>{
-setTimeout(()=>bar.style.width=bar.getAttribute("data"),600);
+/* LINKS */
+function openLink(url){
+window.open(url,"_blank");
+}
+
+/* MUSIC SYSTEM */
+const music=document.getElementById("bgMusic");
+const btn=document.getElementById("musicBtn");
+let playing=false;
+
+document.body.addEventListener("click",()=>{
+if(!playing){
+music.play();
+playing=true;
+}
 });
+
+btn.onclick=(e)=>{
+e.stopPropagation();
+if(playing){
+music.pause();
+playing=false;
+}else{
+music.play();
+playing=true;
+}
+};
 
 </script>
 
