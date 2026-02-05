@@ -5,12 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Siyuu | Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <style>
-:root{--grad:linear-gradient(135deg,#00dbde,#fc00ff);}
+:root{
+--grad:linear-gradient(135deg,#00dbde,#fc00ff);
+--red:#ff1b1b;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
@@ -22,6 +25,35 @@ overflow-x:hidden;
 
 #particles-js{position:fixed;inset:0;z-index:-1}
 
+/* LOADER */
+#loader{
+position:fixed;
+inset:0;
+background:#02020a;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+.ring{
+width:140px;height:140px;
+border-radius:50%;
+border:6px solid transparent;
+border-top:6px solid #00dbde;
+border-right:6px solid #fc00ff;
+animation:spin 1s linear infinite;
+box-shadow:0 0 40px #00dbde;
+}
+#loadPercent{
+margin-top:20px;
+font-size:34px;
+font-family:Orbitron;
+color:#00dbde;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+#loader.hide{opacity:0;pointer-events:none;transition:1s}
+
 /* HERO */
 .hero{
 min-height:100vh;
@@ -31,15 +63,13 @@ align-items:center;
 justify-content:center;
 text-align:center;
 }
-
 .hero img{
 width:220px;
 border-radius:50%;
-padding:5px;
+padding:6px;
 background:var(--grad);
 box-shadow:0 0 40px #00dbde;
 }
-
 .logo{
 font-family:Orbitron;
 font-size:70px;
@@ -54,11 +84,11 @@ animation:float 3s infinite;
 /* BLOODY NAME */
 .bloody-name{
 margin-top:12px;
-font-size:32px;
+font-size:34px;
 font-weight:900;
 letter-spacing:2px;
-color:#ff1b1b;
-text-shadow:0 0 15px red,0 0 40px darkred;
+color:var(--red);
+text-shadow:0 0 15px red,0 0 50px darkred;
 position:relative;
 animation:pulse 2s infinite;
 }
@@ -68,32 +98,32 @@ position:absolute;
 left:10%;
 top:100%;
 width:4px;height:18px;
-background:#ff1b1b;
-box-shadow:40px 8px red,90px 15px red,150px 6px red,210px 14px red;
+background:var(--red);
+box-shadow:40px 10px red,90px 16px red,150px 8px red,210px 15px red;
 animation:drip 2s infinite;
 }
-
-@keyframes drip{
-0%{height:6px}
-50%{height:24px}
-100%{height:6px}
-}
-@keyframes pulse{
-50%{text-shadow:0 0 25px #ff4444,0 0 70px red}
-}
+@keyframes drip{50%{height:25px}}
+@keyframes pulse{50%{text-shadow:0 0 30px red,0 0 80px darkred}}
 
 /* SECTIONS */
 .section{
-max-width:1000px;
-margin:100px auto;
+max-width:1100px;
+margin:90px auto;
 padding:20px;
 }
 .card{
-background:rgba(20,20,40,.75);
-padding:30px;
+background:rgba(25,25,45,.75);
+padding:35px;
 border-radius:25px;
 box-shadow:0 0 40px #00dbde88;
-margin-bottom:40px;
+margin-bottom:45px;
+}
+.card h2{
+font-family:Orbitron;
+background:var(--grad);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:20px;
 }
 
 /* SKILLS */
@@ -115,12 +145,12 @@ transition:2s;
 /* PROJECTS */
 .projects{
 display:flex;
-gap:20px;
+gap:25px;
 overflow-x:auto;
 }
 .project{
-min-width:240px;
-padding:22px;
+min-width:260px;
+padding:25px;
 border-radius:20px;
 background:#14142a;
 box-shadow:0 0 25px #00dbde66;
@@ -130,6 +160,27 @@ cursor:pointer;
 font-weight:600;
 }
 .project:hover{transform:scale(1.12)}
+
+/* CONTACT */
+.contact{
+display:flex;
+justify-content:center;
+gap:22px;
+margin-top:30px;
+}
+.contact a{
+width:70px;height:70px;
+border-radius:18px;
+background:var(--grad);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+color:white;
+box-shadow:0 0 30px #00dbde;
+transition:.4s;
+}
+.contact a:hover{transform:scale(1.2)}
 
 /* MUSIC BTN */
 #musicBtn{
@@ -150,6 +201,12 @@ box-shadow:0 0 30px #00dbde;
 </head>
 <body>
 
+<!-- LOADER -->
+<div id="loader">
+<div class="ring"></div>
+<div id="loadPercent">0%</div>
+</div>
+
 <div id="particles-js"></div>
 
 <section class="hero">
@@ -159,6 +216,11 @@ box-shadow:0 0 30px #00dbde;
 </section>
 
 <section class="section">
+
+<div class="card">
+<h2>About Me</h2>
+<p>I develop Messenger bots, automation systems and modern web interfaces using Node.js and frontend technologies.</p>
+</div>
 
 <div class="card">
 <h2>Skills</h2>
@@ -171,24 +233,26 @@ box-shadow:0 0 30px #00dbde;
 <h2>Projects</h2>
 <div class="projects">
 
-<div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">
-Messenger GoatBot
-</div>
-
+<div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">Messenger GoatBot</div>
 <div class="project">GoatBot Dev</div>
-
-<div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">
-Instagram GoatBot
-</div>
-
+<div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">Instagram GoatBot</div>
 <div class="project">API System</div>
 
 </div>
 </div>
 
+<div class="card">
+<h2>Contact</h2>
+<div class="contact">
+<a href="https://www.facebook.com/share/1Cu1TC1D5h/"><i class="fab fa-facebook-f"></i></a>
+<a href="https://m.me/siyuuuuuuuuuuuuuu"><i class="fab fa-facebook-messenger"></i></a>
+<a href="https://github.com/siyuuu-x1"><i class="fab fa-github"></i></a>
+<a href="https://www.instagram.com/siyuu_0.01"><i class="fab fa-instagram"></i></a>
+</div>
+</div>
+
 </section>
 
-<!-- MUSIC -->
 <audio id="bgMusic" loop>
 <source src="https://i.imgur.com/NqMmnL7.mp4">
 </audio>
@@ -196,6 +260,21 @@ Instagram GoatBot
 
 <script>
 
+/* LOADER */
+let p=0;
+const percent=document.getElementById("loadPercent");
+const loader=document.getElementById("loader");
+const load=setInterval(()=>{
+p+=Math.floor(Math.random()*4)+1;
+if(p>=100){
+p=100;
+clearInterval(load);
+setTimeout(()=>loader.classList.add("hide"),500);
+}
+percent.innerText=p+"%";
+},40);
+
+/* PARTICLES */
 particlesJS("particles-js",{
 particles:{
 number:{value:90},
@@ -205,6 +284,7 @@ line_linked:{enable:true,color:"#00dbde"}
 }
 });
 
+/* SKILLS */
 document.querySelectorAll(".fill").forEach(bar=>{
 setTimeout(()=>bar.style.width=bar.getAttribute("data"),800);
 });
