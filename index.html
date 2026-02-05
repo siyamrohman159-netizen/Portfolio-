@@ -4,228 +4,163 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Siyuu | Portfolio</title>
+
+<!-- Fonts & Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins&display=swap" rel="stylesheet">
+
+<!-- Particles -->
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <style>
 :root{
-  --primary:#00dbde;
-  --secondary:#fc00ff;
-  --accent:#00ff88;
-  --dark-bg:#050510;
-  --light-text:#ffffff;
-  --gradient:linear-gradient(135deg,var(--primary),var(--secondary));
-  --gold:#FFD700;
+--primary:#00dbde;
+--secondary:#fc00ff;
+--accent:#00ff88;
+--dark:#050510;
+--light:#ffffff;
+--gradient:linear-gradient(135deg,var(--primary),var(--secondary));
+--gold:#FFD700;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background:var(--dark-bg);color:var(--light-text);overflow-x:hidden;}
-
-/* Loader */
-#loader{
-  position:fixed;top:0;left:0;width:100%;height:100%;background:var(--dark-bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;
-}
-#loader .loader-bar{
-  width:500px;height:24px;background:#111;border-radius:25px;overflow:hidden;margin-top:20px;
-}
-#loader .loader-fill{
-  width:0;height:100%;background:var(--gradient);transition:0.5s;
-}
-#loader.hidden{opacity:0;pointer-events:none;transition:opacity 1s ease;}
+body{font-family:'Poppins',sans-serif;background:var(--dark);color:var(--light);overflow-x:hidden;}
 
 /* Particles background */
 #particles-js{position:fixed;width:100%;height:100%;z-index:-2;}
 
-/* Hero Section */
+/* Hero */
 header{
   min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;z-index:10;
 }
-header img{width:280px;height:280px;border-radius:50%;border:5px solid var(--accent);margin-bottom:20px;box-shadow:0 0 40px var(--accent);}
+header img{width:250px;height:250px;border-radius:50%;border:4px solid var(--accent);margin-bottom:20px;box-shadow:0 0 35px var(--accent);}
 .hero-name{
-  font-family:'Orbitron',sans-serif;font-size:68px;
-  background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:float 3s ease-in-out infinite;
+font-family:'Orbitron',sans-serif;
+font-size:60px;
+background:var(--gradient);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:float 3s ease-in-out infinite;
 }
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
-.hero-subtitle{font-size:30px;color:var(--accent);margin:12px 0;}
-.hero-location{display:flex;align-items:center;gap:12px;font-size:20px;color:var(--primary);}
-.hero-location i{animation:scaleLoc 2s infinite alternate;}
-@keyframes scaleLoc{0%{transform:scale(1);}100%{transform:scale(1.2);}}
-.scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);animation:bounce 2s infinite;color:var(--accent);}
-@keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0);}40%{transform:translateY(-15px);}60%{transform:translateY(-7px);}}
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+.hero-subtitle{font-size:26px;color:var(--accent);margin:12px 0;}
 
 /* About Me */
-.about-box{max-width:950px;margin:60px auto;padding:50px;background:rgba(20,20,30,0.8);border-radius:30px;backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.15);box-shadow:0 15px 40px rgba(0,0,0,0.35);}
-.about-box h2{font-family:'Orbitron',sans-serif;font-size:38px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:25px;}
-.about-content{font-size:17px;line-height:1.9;color:rgba(255,255,255,0.9);}
-.about-point{margin-bottom:20px;padding-left:35px;position:relative;}
-.about-point:before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:18px;transition:0.3s;}
-.about-point:hover:before{color:var(--primary);transform:scale(1.5);}
-.about-point:hover{transform:translateX(12px);color:white;}
+.about-box{
+max-width:850px;margin:40px auto;padding:35px;background:rgba(20,20,30,0.8);border-radius:25px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+.about-box h2{
+font-family:'Orbitron',sans-serif;font-size:36px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;
+}
+.about-box p{font-size:17px;line-height:1.8;color:rgba(255,255,255,0.9);}
+.about-point{margin-bottom:15px;}
 
 /* Skills */
-.skills-box{max-width:950px;margin:60px auto;}
-.skills-box h2{font-family:'Orbitron',sans-serif;font-size:36px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:25px;}
-.skill{margin:20px 0;}
-.skill-name{font-size:20px;margin-bottom:10px;font-weight:600;}
-.skill-bar{height:22px;background:#111;border-radius:25px;overflow:hidden;box-shadow:0 0 15px #000;}
-.skill-fill{height:100%;width:0;background:var(--gradient);transition:2s;box-shadow:0 0 30px var(--primary);border-radius:25px;}
+.skills-box{max-width:850px;margin:50px auto;}
+.skills-box h2{font-family:'Orbitron',sans-serif;font-size:34px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;}
+.skill{margin:18px 0;}
+.skill-name{font-size:18px;margin-bottom:8px;}
+.skill-bar{height:14px;background:#111;border-radius:20px;overflow:hidden;}
+.skill-fill{height:100%;width:0;background:var(--gradient);transition:2s;box-shadow:0 0 20px var(--primary);}
 
 /* Projects */
-.projects-box{max-width:1200px;margin:60px auto;}
-.projects-box h2{font-family:'Orbitron',sans-serif;font-size:36px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:25px;}
-.projects-container{display:flex;gap:25px;overflow-x:auto;scroll-snap-type:x mandatory;padding:25px;}
-.project-card{min-width:280px;background:var(--gold);padding:30px;border-radius:25px;scroll-snap-align:start;box-shadow:0 0 25px #FFD70055;transition:.4s;cursor:pointer;font-weight:600;font-size:18px;color:#111;text-align:center;}
-.project-card:hover{transform:scale(1.08);box-shadow:0 0 60px var(--gold);}
+.projects-box{max-width:1000px;margin:50px auto;}
+.projects-box h2{font-family:'Orbitron',sans-serif;font-size:34px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;}
+.projects-container{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:25px;}
+.project-card{min-width:250px;background:var(--gold);padding:25px;border-radius:20px;scroll-snap-align:start;box-shadow:0 0 20px #FFD70055;transition:.3s;text-align:center;font-weight:600;cursor:pointer;}
+.project-card:hover{transform:scale(1.1);box-shadow:0 0 45px var(--gold);}
 
 /* Contact */
-.contact-box{position:fixed;bottom:30px;right:30px;display:flex;flex-direction:column;gap:18px;z-index:100;}
-.contact-btn{width:65px;height:65px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:28px;border:none;cursor:pointer;box-shadow:0 0 35px var(--primary);transition:.3s;}
-.contact-btn:hover{transform:scale(1.15);box-shadow:0 0 55px var(--secondary);}
+.contact-box{position:fixed;bottom:30px;right:30px;display:flex;flex-direction:column;gap:15px;z-index:100;}
+.contact-btn{width:60px;height:60px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;color:white;font-size:25px;border:none;cursor:pointer;box-shadow:0 0 30px var(--primary);transition:.3s;}
+.contact-btn:hover{transform:scale(1.15);box-shadow:0 0 50px var(--secondary);}
 
-/* Music Button */
-#music-btn{position:fixed;bottom:30px;left:30px;width:65px;height:65px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:28px;color:white;border:none;cursor:pointer;box-shadow:0 0 35px var(--primary);z-index:100;transition:.3s;}
+/* Music */
+#music-btn{position:fixed;bottom:30px;left:30px;width:60px;height:60px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:25px;color:white;border:none;cursor:pointer;box-shadow:0 0 30px var(--primary);z-index:100;transition:.3s;}
 #music-btn:hover{transform:scale(1.15);}
 #music-btn.playing i{animation:spin 2s linear infinite;}
 @keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-
-/* Ripple effect */
-.ripple-container{position:relative;overflow:hidden;}
-.ripple{position:absolute;background:rgba(255,255,255,0.25);border-radius:50%;transform:scale(0);animation:rippleAnim 0.6s linear;pointer-events:none;}
-@keyframes rippleAnim{to{transform:scale(4);opacity:0;}}
-
-/* Footer */
-footer{margin-top:120px;padding:60px 0;border-top:1px solid rgba(255,255,255,0.15);text-align:center;font-size:17px;color:rgba(255,255,255,0.8);}
-footer .footer-logo{font-family:'Orbitron',sans-serif;font-size:36px;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;}
-
-/* Fade in */
-.fade-in{opacity:0;transform:translateY(35px);transition:all 0.9s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
 </style>
 </head>
 <body>
 
-<!-- Loader -->
-<div id="loader">
-  <h1>Loading...</h1>
-  <div class="loader-bar"><div class="loader-fill"></div></div>
-</div>
-
 <!-- Particles -->
 <div id="particles-js"></div>
 
-<!-- Music -->
+<!-- Background Music -->
 <audio id="bg-music" loop>
   <source src="https://i.imgur.com/NqMmnL7.mp4" type="audio/mp4">
 </audio>
 <button id="music-btn"><i class="fas fa-music"></i></button>
 
-<!-- Hero -->
+<!-- Hero Section -->
 <header>
-  <img src="https://i.imgur.com/guUKCj0.jpeg" alt="Shahariya Ahmmed Siyam">
-  <h1 class="hero-name">SHAHARIYA AHMMED SIYAM (SIYUUU)</h1>
-  <p class="hero-subtitle">Messenger GoatBot Developer</p>
-  <div class="hero-location"><i class="fas fa-map-marker-alt"></i>Mymensingh, Bangladesh</div>
-  <div class="scroll-indicator"><i class="fas fa-chevron-down fa-2x"></i></div>
+<img src="https://i.imgur.com/guUKCj0.jpeg" alt="Shahariya Ahmmed Siyam">
+<h1 class="hero-name">SHAHARIYA AHMMED SIYAM (SIYUUU)</h1>
+<p class="hero-subtitle">Messenger GoatBot Developer</p>
 </header>
 
 <!-- About Me -->
-<div class="about-box fade-in">
-  <h2>About Me</h2>
-  <div class="about-content">
-    <div class="about-point">I'm a Messenger GoatBot developer.</div>
-    <div class="about-point">I mainly work with Node.js to create bots, customize commands, and manage databases.</div>
-    <div class="about-point">I use HTML and CSS to design interfaces and make web pages look professional.</div>
-    <div class="about-point">I also work with Python to automate tasks and integrate APIs.</div>
-    <div class="about-point">I continuously learn new technologies and improve my skills through real projects.</div>
-  </div>
+<div class="about-box">
+<h2>About Me</h2>
+<p class="about-point">I'm a Messenger GoatBot developer.</p>
+<p class="about-point">I mainly work with Node.js to create bots, customize commands, and manage databases.</p>
+<p class="about-point">I use HTML and CSS to design interfaces and make web pages look professional.</p>
+<p class="about-point">I also work with Python to automate tasks and integrate APIs.</p>
+<p class="about-point">I continuously learn new technologies and improve my skills through real projects.</p>
 </div>
 
 <!-- Skills -->
-<div class="skills-box fade-in">
-  <h2>Skills</h2>
-  <div class="skill">
-    <div class="skill-name">JavaScript</div>
-    <div class="skill-bar"><div class="skill-fill" data="90%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Node.js</div>
-    <div class="skill-bar"><div class="skill-fill" data="85%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">HTML/CSS</div>
-    <div class="skill-bar"><div class="skill-fill" data="80%"></div></div>
-  </div>
-  <div class="skill">
-    <div class="skill-name">Python</div>
-    <div class="skill-bar"><div class="skill-fill" data="75%"></div></div>
-  </div>
+<div class="skills-box">
+<h2>Skills</h2>
+<div class="skill">
+<div class="skill-name">JavaScript</div>
+<div class="skill-bar"><div class="skill-fill" data="90%"></div></div>
+</div>
+<div class="skill">
+<div class="skill-name">Node.js</div>
+<div class="skill-bar"><div class="skill-fill" data="85%"></div></div>
+</div>
+<div class="skill">
+<div class="skill-name">HTML/CSS</div>
+<div class="skill-bar"><div class="skill-fill" data="80%"></div></div>
+</div>
+<div class="skill">
+<div class="skill-name">Python</div>
+<div class="skill-bar"><div class="skill-fill" data="75%"></div></div>
+</div>
 </div>
 
 <!-- Projects -->
-<div class="projects-box fade-in">
-  <h2>Projects</h2>
-  <div class="projects-container">
-    <div class="project-card ripple-container" onclick="window.open('https://github.com/siyuuu-x1/main_goatbot_v2','_blank')">Messenger GoatBot</div>
-    <div class="project-card ripple-container" onclick="window.open('https://github.com/siyuuu-x1/Insta-chatbot-v2','_blank')">Instagram GoatBot</div>
-    <div class="project-card ripple-container">API System</div>
-  </div>
+<div class="projects-box">
+<h2>Projects</h2>
+<div class="projects-container">
+<div class="project-card" onclick="window.open('https://github.com/siyuuu-x1/main_goatbot_v2','_blank')">Messenger GoatBot</div>
+<div class="project-card" onclick="window.open('https://github.com/siyuuu-x1/Insta-chatbot-v2','_blank')">Instagram GoatBot</div>
+<div class="project-card">API System</div>
+</div>
 </div>
 
 <!-- Contact -->
-<div class="contact-box fade-in">
-  <a href="https://www.facebook.com/share/1Cu1TC1D5h/" class="contact-btn" target="_blank"><i class="fab fa-facebook-f"></i></a>
-  <a href="https://m.me/siyuuuuuuuuuuuuuu" class="contact-btn" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
-  <a href="https://www.instagram.com/siyuu_0.01?igsh=Mzg0MzMwYm40dWhw" class="contact-btn" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a href="https://github.com/maiko-file-01" class="contact-btn" target="_blank"><i class="fab fa-github"></i></a>
-  <a href="tel:01603604722" class="contact-btn"><i class="fab fa-whatsapp"></i></a>
+<div class="contact-box">
+<a href="https://www.facebook.com/share/1Cu1TC1D5h/" class="contact-btn" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="https://m.me/siyuuuuuuuuuuuuuu" class="contact-btn" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
+<a href="https://www.instagram.com/siyuu_0.01?igsh=Mzg0MzMwYm40dWhw" class="contact-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://github.com/maiko-file-01" class="contact-btn" target="_blank"><i class="fab fa-github"></i></a>
+<a href="tel:01603604722" class="contact-btn"><i class="fab fa-whatsapp"></i></a>
 </div>
 
-<!-- Footer -->
-<footer class="fade-in">
-  <div class="footer-logo">SHAHARIYA AHMMED SIYAM (SIYUUU)</div>
-  <p>"Innovation distinguishes between a leader and a follower." - Steve Jobs</p>
-  <p>© 2026 All rights reserved</p>
-</footer>
-
 <script>
-// Loader animation
-let loaderFill = document.querySelector(".loader-fill");
-let loadPercent = 0;
-let loaderInterval = setInterval(()=>{
-  loadPercent+=2;
-  loaderFill.style.width = loadPercent+"%";
-  if(loadPercent>=100){clearInterval(loaderInterval);document.getElementById("loader").classList.add("hidden");}
-},30);
-
 // Particles
 particlesJS("particles-js",{particles:{number:{value:80,density:{enable:true,value_area:800}},color:{value:["#00ff88","#00dbde","#fc00ff"]},shape:{type:"circle"},opacity:{value:0.5,random:true},size:{value:3,random:true},line_linked:{enable:true,distance:150,color:"#00dbde44",opacity:0.4,width:1},move:{enable:true,speed:2,direction:"none",random:true}},interactivity:{detect_on:"canvas",events:{onhover:{enable:true,mode:"grab"},onclick:{enable:true,mode:"push"}},modes:{grab:{distance:140,line_linked:{opacity:0.7}},push:{particles_nb:4}}}});
 
-// Scroll fade-in
-const faders=document.querySelectorAll(".fade-in");
-const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");}})},{threshold:0.2});
-faders.forEach(fader=>observer.observe(fader));
-
 // Skill animation
-const skillFills=document.querySelectorAll(".skill-fill");
-skillFills.forEach(fill=>setTimeout(()=>fill.style.width=fill.getAttribute("data"),500));
-
-// Ripple effect
-document.querySelectorAll('.ripple-container').forEach(el=>{
-  el.addEventListener('click',function(e){
-    const rect=this.getBoundingClientRect();
-    const x=e.clientX-rect.left;
-    const y=e.clientY-rect.top;
-    const ripple=document.createElement('span');
-    ripple.classList.add('ripple');
-    ripple.style.left=x+'px';
-    ripple.style.top=y+'px';
-    ripple.style.width='50px';
-    ripple.style.height='50px';
-    this.appendChild(ripple);
-    setTimeout(()=>ripple.remove(),700);
-  });
+const fills=document.querySelectorAll(".skill-fill");
+fills.forEach(bar=>{
+setTimeout(()=>bar.style.width=bar.getAttribute("data"),400);
 });
 
 // Music
