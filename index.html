@@ -3,318 +3,272 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Siyuu | Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins&display=swap" rel="stylesheet">
+<title>SIYUU | Portfolio</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Bangers&family=Poppins&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <style>
 :root{
---grad:linear-gradient(135deg,#00dbde,#fc00ff);
---gold:linear-gradient(45deg,#FFD700,#FFA500);
---red:#ff1b1b;
---bg-dark:#0a0a1f;
+  --neon:#00ff88;
+  --grad:linear-gradient(135deg,#00dbde,#fc00ff);
+  --dark:#050510;
+  --gold:#FFD700;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-background:var(--bg-dark);
-color:white;
-font-family:Poppins;
-overflow-x:hidden;
+  background:var(--dark);
+  color:white;
+  font-family:Poppins;
+  overflow-x:hidden;
 }
 
-/* PARTICLES */
-#particles-js{position:fixed;inset:0;z-index:-1}
-
-/* LOADER */
-#loader{
-position:fixed;
-inset:0;
-background:var(--bg-dark);
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
-.ring{
-width:140px;height:140px;
-border-radius:50%;
-border:6px solid transparent;
-border-top:6px solid #00dbde;
-border-right:6px solid #fc00ff;
-animation:spin 1s linear infinite;
-box-shadow:0 0 40px #00dbde;
-}
-#loadPercent{
-margin-top:20px;
-font-size:34px;
-font-family:Orbitron;
-color:#00dbde;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-#loader.hide{opacity:0;pointer-events:none;transition:1s}
-
-/* HERO */
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-}
-.hero img{
-width:220px;
-border-radius:50%;
-padding:6px;
-background:var(--grad);
-box-shadow:0 0 40px #00dbde;
-}
-.logo{
-font-family:Orbitron;
-font-size:70px;
-margin-top:20px;
-background:var(--grad);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-animation:float 3s infinite;
-}
-@keyframes float{50%{transform:translateY(-15px)}}
-
-/* BLOODY NAME */
-.bloody-name{
-margin-top:12px;
-font-size:34px;
-font-weight:900;
-letter-spacing:2px;
-color:#ff5555;
-text-shadow:0 0 25px #ff5555,0 0 50px darkred;
-position:relative;
-animation:pulse 2s infinite;
-}
-@keyframes pulse{50%{text-shadow:0 0 40px #ff5555,0 0 90px darkred}}
-
-/* SECTIONS */
-.section{
-max-width:1100px;
-margin:80px auto;
-padding:20px;
-}
-.card{
-background:rgba(30,30,50,.85);
-padding:35px;
-border-radius:25px;
-box-shadow:0 0 40px #00dbde88;
-margin-bottom:50px;
-}
-.card h2{
-font-family:Orbitron;
-background:var(--grad);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-margin-bottom:20px;
+/* PARTICLES BACKGROUND */
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
 }
 
-/* ABOUT */
-.card p{
-line-height:1.7;
-font-size:16px;
+/* HERO NAME */
+.floating-name{
+  font-family:Bangers,Orbitron;
+  font-size:60px;
+  text-align:center;
+  background:linear-gradient(to right,#ff0000,#ff0055);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:float 3s ease-in-out infinite;
+  margin-top:30px;
+}
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+  100%{transform:translateY(0)}
 }
 
-/* SKILLS */
-.skill{margin-bottom:18px}
+/* Sub Name */
+.sub-name{
+  text-align:center;
+  font-family:Orbitron;
+  color:#ff0044;
+  margin-top:5px;
+  font-size:20px;
+}
+
+/* ABOUT ME */
+section.about{
+  max-width:700px;
+  margin:50px auto;
+  text-align:center;
+}
+section.about p{
+  margin:15px 0;
+  line-height:1.5;
+}
+
+/* SKILL BARS */
+.skill{
+  margin:20px 0;
+}
 .bar{
-height:16px;
-background:#111;
-border-radius:25px;
-overflow:hidden;
+  height:16px;
+  background:#111;
+  border-radius:20px;
+  overflow:hidden;
 }
 .fill{
-height:100%;
-width:0;
-background:var(--grad);
-box-shadow:0 0 25px #00dbde;
-transition:2s cubic-bezier(.17,.67,.83,.67);
+  height:100%;
+  background:var(--grad);
+  width:0;
+  transition:2s;
+  box-shadow:0 0 20px #00dbde;
 }
 
 /* PROJECTS */
 .projects{
-display:flex;
-gap:25px;
-overflow-x:auto;
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:30px;
 }
 .project{
-min-width:260px;
-padding:25px;
-border-radius:20px;
-background:rgba(255,215,0,0.15);
-border:2px solid #FFD700;
-box-shadow:0 0 25px #FFD70066;
-transition:.4s;
-text-align:center;
-cursor:pointer;
-font-weight:600;
+  min-width:260px;
+  background:#161626;
+  padding:25px;
+  border-radius:20px;
+  scroll-snap-align:start;
+  box-shadow:0 0 15px var(--gold);
+  border:2px solid var(--gold);
+  transition:.4s;
 }
-.project:hover{transform:scale(1.12);box-shadow:0 0 40px #FFD700}
-
-/* CONTACT */
-.contact{
-display:flex;
-justify-content:center;
-gap:22px;
-margin-top:30px;
+.project:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 30px var(--gold);
 }
-.contact a{
-width:70px;height:70px;
-border-radius:18px;
-background:var(--grad);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-color:white;
-box-shadow:0 0 30px #00dbde;
-transition:.4s;
-}
-.contact a:hover{transform:scale(1.2)}
-
-/* MUSIC BTN */
-#musicBtn{
-position:fixed;
-right:20px;
-bottom:20px;
-width:65px;height:65px;
-border-radius:50%;
-background:var(--grad);
-border:none;
-color:white;
-font-size:26px;
-cursor:pointer;
-box-shadow:0 0 30px #00dbde;
+.project a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
 }
 
-/* SCROLLBAR */
-.projects::-webkit-scrollbar{
-height:8px;
+/* CONTACT FLOATING */
+#contact-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10000;
 }
-.projects::-webkit-scrollbar-thumb{
-background:#00dbde;
-border-radius:4px;
+.contact-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: linear-gradient(135deg, #00dbde, #fc00ff);
 }
+.contact-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 25px #00dbde, 0 0 40px #fc00ff;
+}
+.contact-btn.facebook { background: linear-gradient(135deg,#3b5998,#1877f2); }
+.contact-btn.messenger { background: linear-gradient(135deg,#00b2ff,#006aff); }
+.contact-btn.instagram { background: linear-gradient(135deg,#f09433,#bc2a8d); }
+.contact-btn.github { background: linear-gradient(135deg,#333,#000); }
 
+/* MUSIC BUTTON */
+#music-btn{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff00ff,#ff5500);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:10000;
+}
+#music-btn i{
+    font-size:22px;
+    color:white;
+    animation:spin 4s linear infinite;
+}
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-<div class="ring"></div>
-<div id="loadPercent">0%</div>
-</div>
-
+<!-- Particles -->
 <div id="particles-js"></div>
 
-<section class="hero">
-<img src="https://i.imgur.com/guUKCj0.jpeg">
-<div class="logo">SIYUU</div>
-<div class="bloody-name">SHAHARIYA AHMMED SIYAM (SIYUUU)</div>
+<h1 class="floating-name">SIYUU</h1>
+<div class="sub-name">SHAHARIYA AHMMED SIYAM (SIYUUU)</div>
+
+<!-- ABOUT ME -->
+<section class="about">
+<p><b>I'm a Messenger GoatBot Developer</b></p>
+<p>Node.js, HTML, CSS, Python, JavaScript, Express.js, MongoDB, and more. I build bots, automation systems, and web apps.</p>
+<p>Each skill is carefully coded to perform efficiently. I also focus on UI/UX for a better user experience.</p>
+
+<!-- Example Skill Description -->
+<p><b>Node.js:</b> Node.js allows me to run JavaScript on the server side. I use it to build fast, scalable back-end applications.<br>
+It is event-driven and asynchronous, perfect for building bots and APIs.</p>
+<p><b>HTML:</b> The backbone of web pages. I structure content, create forms, links, and embed media efficiently.<br>
+I use semantic HTML for better accessibility and SEO.</p>
+<p><b>CSS:</b> CSS styles the HTML elements, creating visually appealing layouts.<br>
+I use animations, gradients, and responsive design for modern look.</p>
+<p><b>Python:</b> Python is versatile for scripting and automation.<br>
+I build bots, data parsers, and tools using Python.</p>
 </section>
 
-<section class="section">
-
-<div class="card">
-<h2>About Me</h2>
-<p>I'm a Messenger GoatBot developer, building automation systems and modern web interfaces. I work extensively with <b>Node.js, HTML, CSS, Python, Express.js, MongoDB</b>.</p>
-<p>With Node.js I create backend bots and APIs. HTML/CSS helps me design responsive frontends. Python is used for automation scripts and small AI projects. MongoDB & Express are used for full-stack app integration and database management.</p>
+<!-- SKILLS -->
+<section style="max-width:700px;margin:40px auto">
+<div class="skill">
+JavaScript
+<div class="bar"><div class="fill" data="90%"></div></div>
 </div>
 
-<div class="card">
-<h2>Skills</h2>
-<div class="skill">JavaScript<div class="bar"><div class="fill" data="90%"></div></div></div>
-<div class="skill">Node.js<div class="bar"><div class="fill" data="85%"></div></div></div>
-<div class="skill">HTML & CSS<div class="bar"><div class="fill" data="80%"></div></div></div>
-<div class="skill">Python<div class="bar"><div class="fill" data="75%"></div></div></div>
+<div class="skill">
+Node.js
+<div class="bar"><div class="fill" data="85%"></div></div>
 </div>
 
-<div class="card">
-<h2>Projects</h2>
+<div class="skill">
+HTML/CSS
+<div class="bar"><div class="fill" data="80%"></div></div>
+</div>
+
+<div class="skill">
+Python
+<div class="bar"><div class="fill" data="70%"></div></div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<h2 align="center">Projects</h2>
 <div class="projects">
-<div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">Messenger GoatBot</div>
-<div class="project">GoatBot Dev</div>
-<div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">Instagram GoatBot</div>
-<div class="project">API System</div>
-</div>
-</div>
-
-<div class="card">
-<h2>Contact</h2>
-<div class="contact">
-<a href="#"><i class="fab fa-facebook-f"></i></a>
-<a href="#"><i class="fab fa-facebook-messenger"></i></a>
-<a href="#"><i class="fab fa-github"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-</div>
+<div class="project"><a href="https://github.com/siyuuu-x1/main_goatbot_v2" target="_blank">Messenger GoatBot</a></div>
+<div class="project"><a href="#">GoatBot Dev</a></div>
+<div class="project"><a href="https://github.com/siyuuu-x1/Insta-chatbot-v2" target="_blank">Instagram GoatBot</a></div>
+<div class="project"><a href="#">API System</a></div>
 </div>
 
-</section>
+<!-- CONTACT -->
+<div id="contact-floating">
+    <a href="https://www.facebook.com/share/1Cu1TC1D5h/" target="_blank" class="contact-btn facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://m.me/siyuuuuuuuuuuuuuu" target="_blank" class="contact-btn messenger"><i class="fab fa-facebook-messenger"></i></a>
+    <a href="https://github.com/maiko-file-01" target="_blank" class="contact-btn github"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/siyuu_0.01?igsh=Mzg0MzMwYm40dWhw" target="_blank" class="contact-btn instagram"><i class="fab fa-instagram"></i></a>
+</div>
 
-<audio id="bgMusic" loop>
-<source src="https://i.imgur.com/NqMmnL7.mp4">
-</audio>
-<button id="musicBtn"><i class="fa fa-music"></i></button>
+<!-- MUSIC -->
+<div id="music-btn"><i class="fas fa-music"></i></div>
+<audio id="bg-music" src="https://i.imgur.com/NqMmnL7.mp4" loop></audio>
 
 <script>
-
-/* LOADER */
-let p=0;
-const percent=document.getElementById("loadPercent");
-const loader=document.getElementById("loader");
-const load=setInterval(()=>{
-p+=Math.floor(Math.random()*4)+1;
-if(p>=100){
-p=100;
-clearInterval(load);
-setTimeout(()=>loader.classList.add("hide"),500);
-}
-percent.innerText=p+"%";
-},40);
-
-/* PARTICLES */
-particlesJS("particles-js",{
-particles:{
-number:{value:90},
-color:{value:"#00dbde"},
-move:{speed:2},
-line_linked:{enable:true,color:"#00dbde"}
-}
+// PARTICLES JS
+particlesJS("particles-js", {
+  "particles": {
+    "number": {"value":80},
+    "size": {"value":3},
+    "move":{"speed":2},
+    "line_linked":{"enable":true,"distance":150,"color":"#00ff88","opacity":0.4,"width":1}
+  }
 });
 
-/* SKILLS */
-document.querySelectorAll(".fill").forEach(bar=>{
-setTimeout(()=>bar.style.width=bar.getAttribute("data"),800);
+// SKILL BARS
+const fills=document.querySelectorAll(".fill");
+fills.forEach(bar=>{
+setTimeout(()=>bar.style.width=bar.getAttribute("data"),400);
 });
 
-function openLink(url){
-window.open(url,"_blank");
-}
-
-/* MUSIC */
-const music=document.getElementById("bgMusic");
-const btn=document.getElementById("musicBtn");
-let playing=false;
+// MUSIC CONTROL
+const music=document.getElementById("bg-music");
+const musicBtn=document.getElementById("music-btn");
 
 document.body.addEventListener("click",()=>{
-if(!playing){music.play();playing=true;}
+    if(music.paused) music.play();
 });
 
-btn.onclick=(e)=>{
-e.stopPropagation();
-playing?music.pause():music.play();
-playing=!playing;
-};
-
+musicBtn.addEventListener("click",(e)=>{
+    e.stopPropagation();
+    if(music.paused){music.play();}else{music.pause();}
+});
 </script>
 </body>
   </html>
