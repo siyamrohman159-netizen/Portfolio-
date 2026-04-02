@@ -103,11 +103,17 @@ border-radius:6px;
 }
 
 /* API PAGE */
-#api-page{display:none}
+#api-page{display:none; padding:20px;}
+#api-page h1{text-align:center;font-family:Creepster;color:red;margin-bottom:30px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+.api-card{background:#0a0a0a;border:1px solid #300;padding:15px;border-radius:10px;transition:.3s;}
+.api-card:hover{transform:scale(1.05);box-shadow:0 0 10px red}
+.api-card .name{color:#ff4d4d}
+.api-card .link{font-size:12px;color:#aaa;word-break:break-all}
+.api-card button{margin-top:10px;padding:6px 12px;background:red;border:none;color:#fff;cursor:pointer;border-radius:5px}
+.back-btn{margin-bottom:20px;padding:8px 15px;background:red;color:#fff;cursor:pointer;border:none;border-radius:6px}
 
-/* Audio */
 audio{display:none}
-
 </style>
 </head>
 <body>
@@ -124,7 +130,7 @@ audio{display:none}
 <div id="particles-js"></div>
 
 <!-- HERO -->
-<div class="hero">
+<div class="hero" id="hero-section">
 <div class="logo">SIYUU</div>
 <img src="https://i.imgur.com/guUKCj0.jpeg">
 <div class="name">SHAHARIYA AHMMED SIYAM</div>
@@ -132,7 +138,7 @@ audio{display:none}
 </div>
 
 <!-- MAIN SECTION -->
-<div class="section">
+<div class="section" id="main-section">
 
 <!-- SKILLS -->
 <div class="card">
@@ -173,7 +179,7 @@ audio{display:none}
 <div class="card">
 <h2>Projects</h2>
 <div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">Messenger GoatBot</div>
-<div class="project" onclick="openLink('api.html')">ALL API</div>
+<div class="project" onclick="showAPI()">ALL API</div>
 <div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">Instagram Bot</div>
 </div>
 
@@ -190,6 +196,13 @@ audio{display:none}
 </div>
 </div>
 
+</div>
+
+<!-- API PAGE -->
+<div id="api-page">
+<button class="back-btn" onclick="hideAPI()">⬅ Back</button>
+<h1>🔥 ALL API 🔥</h1>
+<div class="grid" id="api-container"></div>
 </div>
 
 <script>
@@ -226,6 +239,65 @@ window.open(url,'_blank');
 
 // Particles
 particlesJS("particles-js",{particles:{number:{value:80},color:{value:"#ff0000"},line_linked:{enable:true,color:"#ff0000"},move:{speed:1}}});
+
+// API Data
+const apiData={
+  anisearch:"https://xalman-anisearch-apis-s5yv.onrender.com",
+  album:"https://nx-album-apix.onrender.com",
+  font:"https://xalman-font-apis-dbv8.onrender.com",
+  cdp:"https://nx-cdp-apis-cqss.onrender.com",
+  quiz:"https://xalman-quiz-apis-6s9k.onrender.com",
+  math:"https://xalman-mathgame-apis.onrender.com",
+  meme:"https://nx-meme-apis.onrender.com",
+  autodl:"https://xalman-autodl-apis.onrender.com",
+  tikdl:"https://xalman-tikdl.onrender.com",
+  lyrics:"https://xalman-lyrics-apis.onrender.com",
+  flux:"https://xalman-flux-apis.onrender.com",
+  rbg:"https://xalman-removebg-apis.onrender.com",
+  "4k":"https://xalman-4k-apis.onrender.com",
+  imgbb:"https://xalman-imgbb-apis-8qnx.onrender.com",
+  freeimg:"https://xalman-freeimageupload-apis.onrender.com",
+  catbox:"https://xalman-catbox-apis.onrender.com",
+  ss:"https://xalman-screenshot-apis.onrender.com",
+  trans:"https://xalman-translate-apis.onrender.com",
+  mixmean:"https://xalman-emojimean-and-mix.onrender.com",
+  tm:"https://xalman-tempmail-apis.onrender.com",
+  chat:"https://xalman-aichat-apis.onrender.com",
+  pin:"https://xalman-pinterest-apis.onrender.com",
+  bomb:"https://xalman-bomber-jsaz.onrender.com",
+  prompt:"https://xalman-prompt-apis.onrender.com"
+};
+
+// Show API Page
+function showAPI(){
+document.getElementById("main-section").style.display="none";
+document.getElementById("api-page").style.display="block";
+
+const container=document.getElementById("api-container");
+container.innerHTML=""; // clear old
+
+for(let key in apiData){
+  let div=document.createElement("div");
+  div.className="api-card";
+  div.innerHTML=`<div class="name">${key}</div>
+  <div class="link">${apiData[key]}</div>
+  <button onclick="copyAPI('${key}')">Copy</button>
+  <button onclick="openAPI('${key}')">Open</button>`;
+  container.appendChild(div);
+}
+}
+
+// Hide API Page
+function hideAPI(){
+document.getElementById("api-page").style.display="none";
+document.getElementById("main-section").style.display="block";
+}
+
+// Copy API
+function copyAPI(id){navigator.clipboard.writeText(apiData[id]);alert("Copied: "+id)}
+
+// Open API
+function openAPI(id){window.open(apiData[id],'_blank');}
 </script>
 
 </body>
