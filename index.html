@@ -3,127 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Siyuu's | Portfolio</title>
+<title>Siyuu | Dark Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <style>
-:root{--red:#ff0000; --dark-bg: #050505;}
+:root{--red:#ff0000; --dark-bg: #000000;}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background: var(--dark-bg); color:#eee; font-family: 'Poppins', sans-serif; overflow-x:hidden}
 
-/* --- Loading Animation --- */
-#loader {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 1s ease;
-}
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #111;
-    border-top: 5px solid var(--red);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
+/* Loader */
+#loader { position: fixed; width: 100%; height: 100vh; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; }
+.spinner { width: 50px; height: 50px; border: 5px solid #111; border-top: 5px solid var(--red); border-radius: 50%; animation: spin 1s linear infinite; }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 #particles-js{position:fixed;inset:0;z-index:-1}
 
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .hero img{width:200px; border-radius:50%; border:3px solid var(--red); box-shadow:0 0 40px var(--red); transition: 0.5s;}
-.hero img:hover {transform: scale(1.1) rotate(5deg);}
-
-.logo{position:absolute;top:20px;left:20px;font-family:Creepster;font-size:40px;color:red; letter-spacing: 2px;}
-
-/* --- Text Animation --- */
+.logo{position:absolute;top:20px;left:20px;font-family:Creepster;font-size:40px;color:red;}
 .name{font-family:Creepster;font-size:55px;margin-top:20px;color:red;text-shadow:0 0 20px red,0 0 60px darkred; animation: pulse 2s infinite;}
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.7; transform: scale(1.02); }
-    100% { opacity: 1; }
-}
-
-.tag{margin-top:10px;font-size:22px;color:#aaa; font-weight: 300;}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+.tag{margin-top:10px;font-size:22px;color:#aaa;}
 
 .section{max-width:900px;margin:60px auto;padding:20px}
-
-.card{background:rgba(10,10,10,.9);padding:25px;border-radius:15px;border:1px solid #222;box-shadow:0 0 20px #ff000033;margin-bottom:30px; backdrop-filter: blur(5px);}
-
+.card{background:rgba(10,10,10,.95);padding:25px;border-radius:15px;border:1px solid #222;box-shadow:0 0 20px #ff000033;margin-bottom:30px; backdrop-filter: blur(10px);}
 h2{color:red;margin-bottom:15px; border-left: 4px solid red; padding-left: 15px;}
 
 .bar{height:12px;background:#111;border-radius:20px;margin-top:5px; overflow: hidden;}
 .fill{height:100%;background:red;}
-
 .project{padding:15px;margin:10px 0;background:#111;border-radius:10px;cursor:pointer;transition:.4s; border: 1px solid transparent;}
 .project:hover{background:#1a0000;transform: translateX(10px); border-color: red;}
 
 .socials{display:flex;justify-content:center;gap:25px;margin-top:20px}
 .socials i{font-size:28px;cursor:pointer;transition:.3s}
-.socials i:hover{color:red;transform:scale(1.2) rotate(360deg);}
+.socials i:hover{color:red;transform:scale(1.2);}
 
-.desc{color:#bbb;font-size:14px;margin-top:5px}
+.badge { background: #1a0000; color: #ff4d4d; padding: 5px 15px; border-radius: 5px; font-size: 14px; border: 1px solid #400000; margin-right: 5px;}
 
-/* Info Badges */
-.info-box { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-.badge { background: #1a0000; color: #ff4d4d; padding: 5px 15px; border-radius: 5px; font-size: 14px; border: 1px solid #400000; }
+/* --- Dark API Overlay Page --- */
+#api-page {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.98); z-index: 10000;
+    display: none; flex-direction: column; align-items: center;
+    padding: 50px 20px; overflow-y: auto;
+    border: 2px solid var(--red);
+}
+.api-header { font-family: Creepster; font-size: 45px; color: red; text-shadow: 0 0 15px red; margin-bottom: 30px; }
+.api-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; width: 100%; max-width: 1000px; }
+.api-item { background: #0a0a0a; border: 1px solid #300; padding: 15px; border-radius: 8px; transition: 0.3s; position: relative; overflow: hidden; }
+.api-item:hover { border-color: red; box-shadow: 0 0 15px #ff000055; background: #150000; }
+.api-name { font-weight: bold; color: #ff4d4d; text-transform: uppercase; letter-spacing: 1px; }
+.api-link { font-size: 11px; color: #666; margin-top: 8px; word-break: break-all; display: none; }
+.close-api { position: fixed; top: 20px; right: 20px; font-size: 30px; color: red; cursor: pointer; z-index: 10001; }
 
-</style></head>
+</style>
+</head>
 <body>
 
 <div id="loader"><div class="spinner"></div></div>
-
 <div id="particles-js"></div>
+
+<div id="api-page">
+    <span class="close-api" onclick="toggleApiPage()"><i class="fas fa-times-circle"></i></span>
+    <div class="api-header"> API SYSTEM</div>
+    <div class="api-grid" id="api-container">
+        </div>
+</div>
 
 <div class="hero">
     <div class="logo" data-aos="fade-right">SIYUU</div>
-    <img src="https://files.catbox.moe/mgb7ob.jpg" data-aos="zoom-in" data-aos-duration="1500" onerror="this.src='https://via.placeholder.com/200'">
-    <div class="name" data-aos="fade-up" data-aos-delay="200">SHAHARIYA AHMMED SIYAM</div>
-    <div class="tag" data-aos="fade-up" data-aos-delay="400">GoatBot Developer</div>
+    <img src="https://i.imgur.com/guUKCj0.jpeg" data-aos="zoom-in" data-aos-duration="1500" onerror="this.src='https://via.placeholder.com/200'">
+    <div class="name" data-aos="fade-up">SHAHARIYA AHMMED SIYAM</div>
+    <div class="tag" data-aos="fade-up" data-aos-delay="200">GoatBot Developer</div>
 </div>
 
 <div class="section">
     <div class="card" data-aos="fade-up">
         <h2>Personal Info & Status</h2>
-        <div class="info-box">
+        <div style="display:flex; flex-wrap:wrap; gap:10px;">
             <span class="badge"><i class="fas fa-map-marker-alt"></i> Jamalpur, Mymensingh</span>
-            <span class="badge"><i class="fas fa-circle" style="font-size:8px; color: #00ff00;"></i> Active Now</span>
-            <span class="badge"><i class="fas fa-code"></i> Coding Enthusiast</span>
-            <span class="badge"><i class="fas fa-ghost"></i> main project maiko goat's</span>
+            <span class="badge"><i class="fas fa-circle" style="color: #0f0; font-size: 8px;"></i> Online</span>
+            <span class="badge">Status: Coding...</span>
         </div>
     </div>
 
     <div class="card" data-aos="fade-right">
-        <h2>About Me</h2>
-        <p>I build powerful bots, APIs and dark styled web systems with performance focus. My goal is to create seamless automation tools for modern platforms.</p>
-    </div>
-
-    <div class="card" data-aos="fade-left">
         <h2>Skills</h2>
-        <div data-aos="fade-up" data-aos-delay="100">Node.js<div class="bar"><div class="fill" style="width:85%"></div></div><div class="desc">Backend APIs & bot systems build kori fast & optimized way te.</div></div>
-        <div data-aos="fade-up" data-aos-delay="200" style="margin-top:15px">HTML<div class="bar"><div class="fill" style="width:80%"></div></div><div class="desc">Clean structure diye modern responsive layout design kori.</div></div>
-        <div data-aos="fade-up" data-aos-delay="300" style="margin-top:15px">CSS<div class="bar"><div class="fill" style="width:78%"></div></div><div class="desc">Animation, UI effects & stylish design create korte expert.</div></div>
-        <div data-aos="fade-up" data-aos-delay="400" style="margin-top:15px">JavaScript<div class="bar"><div class="fill" style="width:90%"></div></div><div class="desc">Interactive feature, automation & logic control e strong.</div></div>
-        <div data-aos="fade-up" data-aos-delay="500" style="margin-top:15px">Python<div class="bar"><div class="fill" style="width:75%"></div></div><div class="desc">Bot, script & automation system build korte use kori.</div></div>
+        <div>Node.js<div class="bar"><div class="fill" style="width:85%"></div></div></div>
+        <div style="margin-top:10px">JavaScript<div class="bar"><div class="fill" style="width:90%"></div></div></div>
+        <div style="margin-top:10px">Python<div class="bar"><div class="fill" style="width:75%"></div></div></div>
     </div>
 
     <div class="card" data-aos="zoom-in">
         <h2>Projects</h2>
         <div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">Messenger GoatBot</div>
+        <div class="project" onclick="toggleApiPage()">⚠️ API System (Click to Enter)</div>
         <div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">Instagram Bot</div>
-        <div class="project" onclick="openLink('https://github.com/siyuuu-x1/Maiko-goatbot-v2')">Maiko GoatBot V2</div>
-        <div class="project" onclick="openLink('https://github.com/siyuuu-x1/api-system')">API System</div>
     </div>
 
-    <div class="card" data-aos="fade-up">
+    <div class="card" data-aos="fade-up" style="text-align: center;">
         <h2>Contact</h2>
         <div class="socials">
             <i class="fa-brands fa-facebook-messenger" onclick="openLink('https://m.me/siyuuuuuuuuuuuuuuu')"></i>
@@ -135,31 +116,67 @@ h2{color:red;margin-bottom:15px; border-left: 4px solid red; padding-left: 15px;
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // Initialize AOS Animation
-    AOS.init({ duration: 1000, once: false });
+    AOS.init({ duration: 1000 });
 
-    // Preloader Logic
+    // API Data
+    const apiData = {
+        "anisearch": "https://xalman-anisearch-apis-s5yv.onrender.com",
+        "album": "https://nx-album-apix.onrender.com",
+        "font": "https://xalman-font-apis-dbv8.onrender.com",
+        "cdp": "https://nx-cdp-apis-cqss.onrender.com",
+        "quiz": "https://xalman-quiz-apis-6s9k.onrender.com",
+        "math": "https://xalman-mathgame-apis.onrender.com",
+        "meme": "https://nx-meme-apis.onrender.com",
+        "autodl": "https://xalman-autodl-apis.onrender.com",
+        "tikdl": "https://xalman-tikdl.onrender.com",
+        "lyrics": "https://xalman-lyrics-apis.onrender.com",
+        "flux": "https://xalman-flux-apis.onrender.com",
+        "rbg": "https://xalman-removebg-apis.onrender.com",
+        "4k": "https://xalman-4k-apis.onrender.com",
+        "imgbb": "https://xalman-imgbb-apis-8qnx.onrender.com",
+        "freeimg": "https://xalman-freeimageupload-apis.onrender.com",
+        "catbox": "https://xalman-catbox-apis.onrender.com",
+        "ss": "https://xalman-screenshot-apis.onrender.com",
+        "trans": "https://xalman-translate-apis.onrender.com",
+        "mixmean": "https://xalman-emojimean-and-mix.onrender.com",
+        "tm": "https://xalman-tempmail-apis.onrender.com",
+        "chat": "https://xalman-aichat-apis.onrender.com",
+        "pin": "https://xalman-pinterest-apis"
+    };
+
+    // Load APIs into the grid
+    const container = document.getElementById('api-container');
+    for (let key in apiData) {
+        let item = document.createElement('div');
+        item.className = 'api-item';
+        item.innerHTML = `
+            <div class="api-name"><i class="fas fa-skull"></i> ${key}</div>
+            <div class="api-link" id="link-${key}">${apiData[key]}</div>
+            <button onclick="showLink('${key}')" style="margin-top:10px; background:red; border:none; color:white; padding:4px 10px; cursor:pointer; border-radius:4px; font-size:12px;">Get Link</button>
+        `;
+        container.appendChild(item);
+    }
+
+    function showLink(id) {
+        const el = document.getElementById(`link-${id}`);
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function toggleApiPage() {
+        const page = document.getElementById('api-page');
+        page.style.display = (page.style.display === 'flex') ? 'none' : 'flex';
+        document.body.style.overflow = (page.style.display === 'flex') ? 'hidden' : 'auto';
+    }
+
     window.addEventListener('load', () => {
-        const loader = document.getElementById('loader');
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            setTimeout(() => { loader.style.display = 'none'; }, 1000);
-        }, 500);
+        setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 600);
     });
 
     particlesJS("particles-js",{
-        particles:{
-            number:{value:140},
-            color:{value:"#ff0000"},
-            shape:{type:"circle"},
-            opacity:{value:0.6},
-            size:{value:3},
-            move:{speed:3},
-            line_linked:{enable:true,color:"#ff0000"}
-        }
+        particles:{ number:{value:100}, color:{value:"#ff0000"}, shape:{type:"circle"}, opacity:{value:0.5}, size:{value:3}, move:{speed:2}, line_linked:{enable:true,color:"#ff0000"} }
     });
 
-    function openLink(url){window.open(url,'_blank');}
+    function openLink(url){ window.open(url,'_blank'); }
 </script>
 </body>
 </html>
