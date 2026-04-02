@@ -17,16 +17,14 @@ body{background:#000;color:#eee;font-family:Poppins;overflow-x:hidden}
 /* Horror BG */
 body::before{
 content:"";
-position:fixed;
-width:100%;height:100%;
+position:fixed;width:100%;height:100%;
 background:url('https://i.imgur.com/8Km9tLL.png');
 opacity:0.05;
 z-index:-2;
 }
 body::after{
 content:"";
-position:fixed;
-width:100%;height:100%;
+position:fixed;width:100%;height:100%;
 background:radial-gradient(circle,transparent 40%,black 100%);
 z-index:-1;
 }
@@ -49,20 +47,24 @@ animation:flicker 1.5s infinite;
 @keyframes spin{100%{transform:rotate(360deg)}}
 @keyframes flicker{50%{opacity:0.3}}
 
-/* Scroll */
+/* Scroll bar */
 #scroll-bar{position:fixed;top:0;left:0;height:4px;background:red;width:0%}
 
 /* Particles */
 #particles-js{position:fixed;inset:0;z-index:-3}
 
 /* Hero */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;transform:translateY(30px);transition:1s}
+.hero.show{opacity:1;transform:translateY(0);}
 .hero img{width:200px;border-radius:50%;border:3px solid red;box-shadow:0 0 40px red;transition:.5s}
 .hero img:hover{transform:scale(1.1);box-shadow:0 0 80px red,0 0 120px darkred}
 
-.logo{position:absolute;top:20px;left:20px;font-family:Creepster;font-size:40px;color:red}
-.name{font-family:Creepster;font-size:50px;color:red}
-.tag{color:#aaa;margin-top:10px}
+.logo{position:absolute;top:20px;left:20px;font-family:Creepster;font-size:40px;color:red;opacity:0;transform:translateX(-30px);transition:1s}
+.logo.show{opacity:1;transform:translateX(0);}
+.name{font-family:Creepster;font-size:50px;color:red;opacity:0;transition:1s;}
+.name.show{opacity:1;}
+.tag{color:#aaa;margin-top:10px;opacity:0;transition:1s;}
+.tag.show{opacity:1;}
 
 /* Cards */
 .section{max-width:900px;margin:60px auto;padding:20px}
@@ -73,7 +75,11 @@ animation:flicker 1.5s infinite;
   border:1px solid #300;
   box-shadow:0 0 20px #ff000033;
   margin-bottom:30px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s;
 }
+.card.show{opacity:1;transform:translateY(0);}
 
 /* Skills bars */
 .bar{height:12px;background:#111;border-radius:20px;margin-top:5px;overflow:hidden}
@@ -91,25 +97,14 @@ animation:flicker 1.5s infinite;
 /* Badges */
 .badge{background:#1a0000;color:#ff4d4d;padding:5px 15px;border-radius:5px;font-size:14px;border:1px solid #400000;margin-right:5px}
 
-/* Button */
-.open-api{
-margin-top:20px;
-padding:10px 20px;
-background:red;
-border:none;
-color:#fff;
-cursor:pointer;
-border-radius:6px;
-}
-
 /* API PAGE */
 #api-page{display:none; padding:20px;}
 #api-page h1{text-align:center;font-family:Creepster;color:red;margin-bottom:30px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
 .api-card{background:#0a0a0a;border:1px solid #300;padding:15px;border-radius:10px;transition:.3s;}
 .api-card:hover{transform:scale(1.05);box-shadow:0 0 10px red}
-.api-card .name{color:#ff4d4d}
-.api-card .link{font-size:12px;color:#aaa;word-break:break-all}
+.api-card .name{color:#ff4d4d;font-size:18px;font-weight:bold;}
+.api-card .link{font-size:12px;color:#aaa;word-break:break-all;margin-top:5px;}
 .api-card button{margin-top:10px;padding:6px 12px;background:red;border:none;color:#fff;cursor:pointer;border-radius:5px}
 .back-btn{margin-bottom:20px;padding:8px 15px;background:red;color:#fff;cursor:pointer;border:none;border-radius:6px}
 
@@ -143,7 +138,6 @@ audio{display:none}
 <!-- SKILLS -->
 <div class="card">
 <h2>Skills</h2>
-
 <div style="margin-top:10px">
 <div>HTML</div>
 <div class="bar"><div class="fill" style="width:92%"></div></div>
@@ -211,10 +205,18 @@ window.addEventListener("load",()=>{
   setTimeout(()=>{
     document.getElementById("loader").style.opacity="0";
     setTimeout(()=>{loader.style.display="none"},500);
+    // show hero & cards animation
+    document.querySelector(".hero").classList.add("show");
+    document.querySelector(".logo").classList.add("show");
+    document.querySelector(".name").classList.add("show");
+    document.querySelector(".tag").classList.add("show");
+    document.querySelectorAll(".card").forEach((c,i)=>{
+      setTimeout(()=>{c.classList.add("show")}, i*200);
+    });
   },800);
 });
 
-// Typing
+// Typing animation
 const text=" GoatBot Developer ⚡";
 let i=0;
 function typing(){
@@ -225,13 +227,13 @@ i++;setTimeout(typing,50);
 typing();
 
 // Scroll
-window.onscroll=()=>{
+window.addEventListener('scroll',()=>{
 let s=document.documentElement.scrollTop;
 let h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
 document.getElementById("scroll-bar").style.width=(s/h)*100+"%";
-};
+});
 
-// Open Link with click sound
+// Open Link
 function openLink(url){
 document.getElementById("clickSound").play();
 window.open(url,'_blank');
@@ -268,7 +270,7 @@ const apiData={
   prompt:"https://xalman-prompt-apis.onrender.com"
 };
 
-// Show API Page
+// Show API
 function showAPI(){
 document.getElementById("main-section").style.display="none";
 document.getElementById("api-page").style.display="block";
@@ -281,23 +283,22 @@ for(let key in apiData){
   div.className="api-card";
   div.innerHTML=`<div class="name">${key}</div>
   <div class="link">${apiData[key]}</div>
-  <button onclick="copyAPI('${key}')">Copy</button>
-  <button onclick="openAPI('${key}')">Open</button>`;
+  <button onclick="copyAPI('${key}')">Copy</button>`;
   container.appendChild(div);
 }
 }
 
-// Hide API Page
+// Hide API
 function hideAPI(){
 document.getElementById("api-page").style.display="none";
 document.getElementById("main-section").style.display="block";
 }
 
 // Copy API
-function copyAPI(id){navigator.clipboard.writeText(apiData[id]);alert("Copied: "+id)}
-
-// Open API
-function openAPI(id){window.open(apiData[id],'_blank');}
+function copyAPI(id){
+navigator.clipboard.writeText(apiData[id]);
+alert(`Copied: ${apiData[id]}`);
+}
 </script>
 
 </body>
