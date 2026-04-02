@@ -3,180 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Siyuu | Dark Portfolio</title>
+<title>Siyuu's | Portfolio</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <style>
-:root{--red:#ff0000; --dark-bg: #000000;}
+:root{--red:#ff0000; --dark-bg:#000;}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background: var(--dark-bg); color:#eee; font-family: 'Poppins', sans-serif; overflow-x:hidden}
+body{background:var(--dark-bg);color:#eee;font-family:Poppins;overflow-x:hidden}
 
 /* Loader */
-#loader { position: fixed; width: 100%; height: 100vh; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; }
-.spinner { width: 50px; height: 50px; border: 5px solid #111; border-top: 5px solid var(--red); border-radius: 50%; animation: spin 1s linear infinite; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+#loader{position:fixed;width:100%;height:100vh;background:#000;display:flex;justify-content:center;align-items:center;z-index:9999;}
+.spinner{width:50px;height:50px;border:5px solid #111;border-top:5px solid red;border-radius:50%;animation:spin 1s linear infinite;}
+@keyframes spin{100%{transform:rotate(360deg)}}
 
+/* Scroll bar */
+#scroll-bar{position:fixed;top:0;left:0;height:4px;background:red;width:0%;z-index:9999}
+
+/* Background */
 #particles-js{position:fixed;inset:0;z-index:-1}
 
+/* Hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.hero img{width:200px; border-radius:50%; border:3px solid var(--red); box-shadow:0 0 40px var(--red); transition: 0.5s;}
-.logo{position:absolute;top:20px;left:20px;font-family:Creepster;font-size:40px;color:red;}
-.name{font-family:Creepster;font-size:55px;margin-top:20px;color:red;text-shadow:0 0 20px red,0 0 60px darkred; animation: pulse 2s infinite;}
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-.tag{margin-top:10px;font-size:22px;color:#aaa;}
+.hero img{width:200px;border-radius:50%;border:3px solid red;box-shadow:0 0 40px red;transition:.5s}
+.hero img:hover{transform:scale(1.1) rotate(2deg);box-shadow:0 0 60px red,0 0 120px darkred}
+.logo{position:absolute;top:20px;left:20px;font-family:Creepster;font-size:40px;color:red}
+.name{font-family:Creepster;font-size:55px;margin-top:20px;color:red;text-shadow:0 0 20px red;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.7}}
+.tag{margin-top:10px;font-size:22px;color:#aaa}
 
+/* Sections */
 .section{max-width:900px;margin:60px auto;padding:20px}
-.card{background:rgba(10,10,10,.95);padding:25px;border-radius:15px;border:1px solid #222;box-shadow:0 0 20px #ff000033;margin-bottom:30px; backdrop-filter: blur(10px);}
-h2{color:red;margin-bottom:15px; border-left: 4px solid red; padding-left: 15px;}
+.card{background:#0a0a0a;padding:25px;border-radius:15px;border:1px solid #222;box-shadow:0 0 20px #ff000033;margin-bottom:30px}
+h2{color:red;margin-bottom:15px;border-left:4px solid red;padding-left:15px}
 
-.bar{height:12px;background:#111;border-radius:20px;margin-top:5px; overflow: hidden;}
-.fill{height:100%;background:red;}
-.project{padding:15px;margin:10px 0;background:#111;border-radius:10px;cursor:pointer;transition:.4s; border: 1px solid transparent;}
-.project:hover{background:#1a0000;transform: translateX(10px); border-color: red;}
+/* Skills */
+.bar{height:12px;background:#111;border-radius:20px;margin-top:5px;overflow:hidden}
+.fill{height:100%;background:red}
 
+/* Projects */
+.project{padding:15px;margin:10px 0;background:#111;border-radius:10px;cursor:pointer;transition:.4s}
+.project:hover{background:#1a0000;transform:translateX(10px)}
+
+/* Social */
 .socials{display:flex;justify-content:center;gap:25px;margin-top:20px}
 .socials i{font-size:28px;cursor:pointer;transition:.3s}
-.socials i:hover{color:red;transform:scale(1.2);}
+.socials i:hover{color:red;transform:scale(1.2)}
 
-.badge { background: #1a0000; color: #ff4d4d; padding: 5px 15px; border-radius: 5px; font-size: 14px; border: 1px solid #400000; margin-right: 5px;}
+.badge{background:#1a0000;color:#ff4d4d;padding:5px 15px;border-radius:5px;font-size:14px;border:1px solid #400000;margin-right:5px}
 
-/* --- Dark API Overlay Page --- */
-#api-page {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.98); z-index: 10000;
-    display: none; flex-direction: column; align-items: center;
-    padding: 50px 20px; overflow-y: auto;
-    border: 2px solid var(--red);
-}
-.api-header { font-family: Creepster; font-size: 45px; color: red; text-shadow: 0 0 15px red; margin-bottom: 30px; }
-.api-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; width: 100%; max-width: 1000px; }
-.api-item { background: #0a0a0a; border: 1px solid #300; padding: 15px; border-radius: 8px; transition: 0.3s; position: relative; overflow: hidden; }
-.api-item:hover { border-color: red; box-shadow: 0 0 15px #ff000055; background: #150000; }
-.api-name { font-weight: bold; color: #ff4d4d; text-transform: uppercase; letter-spacing: 1px; }
-.api-link { font-size: 11px; color: #666; margin-top: 8px; word-break: break-all; display: none; }
-.close-api { position: fixed; top: 20px; right: 20px; font-size: 30px; color: red; cursor: pointer; z-index: 10001; }
+/* API Page */
+#api-page{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:10000;display:none;flex-direction:column;align-items:center;padding:50px;overflow:auto}
+.api-header{font-family:Creepster;font-size:45px;color:red;margin-bottom:20px}
+.api-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;width:100%}
+.api-item{background:#0a0a0a;border:1px solid #300;padding:15px;border-radius:8px}
+.api-name{color:#ff4d4d}
+.api-link{font-size:11px;color:#666;display:none}
+.close-api{position:fixed;top:20px;right:20px;font-size:30px;color:red;cursor:pointer}
 
 </style>
 </head>
 <body>
 
 <div id="loader"><div class="spinner"></div></div>
+<div id="scroll-bar"></div>
 <div id="particles-js"></div>
 
+<audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
+
+<!-- API PAGE -->
 <div id="api-page">
-    <span class="close-api" onclick="toggleApiPage()"><i class="fas fa-times-circle"></i></span>
-    <div class="api-header"> API SYSTEM</div>
-    <div class="api-grid" id="api-container">
-        </div>
+<span class="close-api" onclick="toggleApiPage()">✖</span>
+<div class="api-header">API </div>
+<div class="api-grid" id="api-container"></div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
-    <div class="logo" data-aos="fade-right">SIYUU</div>
-    <img src="https://i.imgur.com/guUKCj0.jpeg" data-aos="zoom-in" data-aos-duration="1500" onerror="this.src='https://via.placeholder.com/200'">
-    <div class="name" data-aos="fade-up">SHAHARIYA AHMMED SIYAM</div>
-    <div class="tag" data-aos="fade-up" data-aos-delay="200">GoatBot Developer</div>
+<div class="logo">SIYUU</div>
+<img src="https://i.imgur.com/guUKCj0.jpeg">
+<div class="name">SHAHARIYA AHMMED SIYAM</div>
+<div class="tag" id="typing-text"></div>
 </div>
 
+<!-- MAIN -->
 <div class="section">
-    <div class="card" data-aos="fade-up">
-        <h2>Personal Info & Status</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:10px;">
-            <span class="badge"><i class="fas fa-map-marker-alt"></i> Jamalpur, Mymensingh</span>
-            <span class="badge"><i class="fas fa-circle" style="color: #0f0; font-size: 8px;"></i> Online</span>
-            <span class="badge">Status: Coding...</span>
-        </div>
-    </div>
 
-    <div class="card" data-aos="fade-right">
-        <h2>Skills</h2>
-        <div>Node.js<div class="bar"><div class="fill" style="width:85%"></div></div></div>
-        <div style="margin-top:10px">JavaScript<div class="bar"><div class="fill" style="width:90%"></div></div></div>
-        <div style="margin-top:10px">Python<div class="bar"><div class="fill" style="width:75%"></div></div></div>
-    </div>
+<div class="card">
+<h2>Personal Info</h2>
+<span class="badge">📍 Jamalpur</span>
+<span class="badge">🟢 Online</span>
+<span class="badge">Coding...</span>
+</div>
 
-    <div class="card" data-aos="zoom-in">
-        <h2>Projects</h2>
-        <div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">Messenger GoatBot</div>
-        <div class="project" onclick="toggleApiPage()">⚠️ API System (Click to Enter)</div>
-        <div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">Instagram Bot</div>
-    </div>
+<!-- SKILLS -->
+<div class="card">
+<h2>Skills</h2>
 
-    <div class="card" data-aos="fade-up" style="text-align: center;">
-        <h2>Contact</h2>
-        <div class="socials">
-            <i class="fa-brands fa-facebook-messenger" onclick="openLink('https://m.me/siyuuuuuuuuuuuuuuu')"></i>
-            <i class="fa-brands fa-github" onclick="openLink('https://github.com/siyuuu-x1/Maiko-goatbot-v2')"></i>
-            <i class="fa-brands fa-whatsapp" onclick="openLink('https://wa.me/8801603604722')"></i>
-        </div>
-    </div>
+<div>HTML
+<div class="bar"><div class="fill" style="width:92%"></div></div>
+<small>Structure & layout create korte expert.</small>
+</div>
+
+<div style="margin-top:10px">CSS
+<div class="bar"><div class="fill" style="width:88%"></div></div>
+<small>Modern UI & animation design e strong.</small>
+</div>
+
+<div style="margin-top:10px">JavaScript
+<div class="bar"><div class="fill" style="width:90%"></div></div>
+<small>Dynamic system & bot logic.</small>
+</div>
+
+<div style="margin-top:10px">Node.js
+<div class="bar"><div class="fill" style="width:85%"></div></div>
+<small>Backend & GoatBot developer.</small>
+</div>
+
+<div style="margin-top:10px">Python
+<div class="bar"><div class="fill" style="width:80%"></div></div>
+<small>Automation & API system build.</small>
+</div>
+
+</div>
+
+<!-- PROJECT -->
+<div class="card">
+<h2>Projects</h2>
+<div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">Messenger GoatBot</div>
+<div class="project" onclick="toggleApiPage()">ALL API</div>
+<div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">Instagram Bot</div>
+</div>
+
+<!-- CONTACT -->
+<div class="card" style="text-align:center">
+<h2>Contact</h2>
+<div class="socials">
+<i class="fa-brands fa-facebook-messenger" onclick="openLink('https://m.me/siyuuuuuuuuuuuuuuu')"></i>
+<i class="fa-brands fa-github" onclick="openLink('https://github.com/siyuuu-x1/Maiko-goatbot-v2')"></i>
+<i class="fa-brands fa-whatsapp" onclick="openLink('https://wa.me/8801603604722')"></i>
+</div>
+</div>
+
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 <script>
-    AOS.init({ duration: 1000 });
+// Loader
+window.onload=()=>setTimeout(()=>loader.style.display="none",500)
 
-    // API Data
-    const apiData = {
-        "anisearch": "https://xalman-anisearch-apis-s5yv.onrender.com",
-        "album": "https://nx-album-apix.onrender.com",
-        "font": "https://xalman-font-apis-dbv8.onrender.com",
-        "cdp": "https://nx-cdp-apis-cqss.onrender.com",
-        "quiz": "https://xalman-quiz-apis-6s9k.onrender.com",
-        "math": "https://xalman-mathgame-apis.onrender.com",
-        "meme": "https://nx-meme-apis.onrender.com",
-        "autodl": "https://xalman-autodl-apis.onrender.com",
-        "tikdl": "https://xalman-tikdl.onrender.com",
-        "lyrics": "https://xalman-lyrics-apis.onrender.com",
-        "flux": "https://xalman-flux-apis.onrender.com",
-        "rbg": "https://xalman-removebg-apis.onrender.com",
-        "4k": "https://xalman-4k-apis.onrender.com",
-        "imgbb": "https://xalman-imgbb-apis-8qnx.onrender.com",
-        "freeimg": "https://xalman-freeimageupload-apis.onrender.com",
-        "catbox": "https://xalman-catbox-apis.onrender.com",
-        "ss": "https://xalman-screenshot-apis.onrender.com",
-        "trans": "https://xalman-translate-apis.onrender.com",
-        "mixmean": "https://xalman-emojimean-and-mix.onrender.com",
-        "tm": "https://xalman-tempmail-apis.onrender.com",
-        "chat": "https://xalman-aichat-apis.onrender.com",
-        "pin": "https://xalman-pinterest-apis"
-    };
+// Typing
+const text=" GoatBot Developer ⚡";
+let i=0;
+function typing(){
+if(i<text.length){
+document.getElementById("typing-text").innerHTML+=text.charAt(i);
+i++;setTimeout(typing,50);
+}}
+typing();
 
-    // Load APIs into the grid
-    const container = document.getElementById('api-container');
-    for (let key in apiData) {
-        let item = document.createElement('div');
-        item.className = 'api-item';
-        item.innerHTML = `
-            <div class="api-name"><i class="fas fa-skull"></i> ${key}</div>
-            <div class="api-link" id="link-${key}">${apiData[key]}</div>
-            <button onclick="showLink('${key}')" style="margin-top:10px; background:red; border:none; color:white; padding:4px 10px; cursor:pointer; border-radius:4px; font-size:12px;">Get Link</button>
-        `;
-        container.appendChild(item);
-    }
+// Scroll bar
+window.onscroll=()=>{
+let s=document.documentElement.scrollTop;
+let h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.getElementById("scroll-bar").style.width=(s/h)*100+"%";
+};
 
-    function showLink(id) {
-        const el = document.getElementById(`link-${id}`);
-        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-    }
+// Sound + link
+function openLink(url){
+document.getElementById("clickSound").play();
+window.open(url,'_blank');
+}
 
-    function toggleApiPage() {
-        const page = document.getElementById('api-page');
-        page.style.display = (page.style.display === 'flex') ? 'none' : 'flex';
-        document.body.style.overflow = (page.style.display === 'flex') ? 'hidden' : 'auto';
-    }
+// API
+const apiData={meme:"https://nx-meme-apis.onrender.com",chat:"https://xalman-aichat-apis.onrender.com"};
+const c=document.getElementById("api-container");
+for(let k in apiData){
+let d=document.createElement("div");
+d.className="api-item";
+d.innerHTML=`<div class="api-name">${k}</div>
+<div class="api-link" id="l-${k}">${apiData[k]}</div>
+<button onclick="showLink('${k}')">Get</button>`;
+c.appendChild(d);
+}
 
-    window.addEventListener('load', () => {
-        setTimeout(() => { document.getElementById('loader').style.display = 'none'; }, 600);
-    });
+function showLink(id){
+let e=document.getElementById("l-"+id);
+e.style.display=e.style.display==="block"?"none":"block";
+}
 
-    particlesJS("particles-js",{
-        particles:{ number:{value:100}, color:{value:"#ff0000"}, shape:{type:"circle"}, opacity:{value:0.5}, size:{value:3}, move:{speed:2}, line_linked:{enable:true,color:"#ff0000"} }
-    });
+function toggleApiPage(){
+let p=document.getElementById("api-page");
+p.style.display=p.style.display==="flex"?"none":"flex";
+}
 
-    function openLink(url){ window.open(url,'_blank'); }
+// Particles
+particlesJS("particles-js",{particles:{number:{value:80},color:{value:"#ff0000"},line_linked:{enable:true,color:"#ff0000"}}});
 </script>
+
 </body>
 </html>
