@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,32 +23,12 @@ body {
     overflow-x: hidden;
 }
 
-/* PAGE 1 */
+/* Page 1 - Original Style (Improved) */
 .page {
     width: 100%;
     position: relative;
 }
 
-/* PAGE 2 - THE DREAMY PINK PAGE */
-#page2 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: radial-gradient(circle, #fff0f3 0%, #ffccd5 100%);
-    color: #5a0f2e;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transform: translateY(100%);
-    z-index: 20;
-    overflow: hidden;
-}
-
-/* SECTION STYLING */
 .section {
     padding: 80px 20px;
     display: flex;
@@ -59,111 +39,107 @@ body {
 
 .title {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    margin-bottom: 10px;
+    font-size: 3.2rem;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .special-font {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     color: var(--primary-pink);
+    text-align: center;
 }
 
 .card {
-    max-width: 500px;
-    width: 85%;
-    margin: 20px auto;
-    padding: 30px;
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.08);
+    max-width: 520px;
+    width: 90%;
+    margin: 25px auto;
+    padding: 35px 25px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.09);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: transform 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    transition: transform 0.4s;
 }
 
-#page2 .card {
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(255, 77, 109, 0.2);
-    color: #5a0f2e;
+.card:hover {
+    transform: translateY(-8px);
 }
 
-/* BUTTON */
 .btn {
-    padding: 18px 50px;
-    font-size: 1.1rem;
+    padding: 18px 55px;
+    font-size: 1.15rem;
     font-weight: 600;
     border: none;
     border-radius: 50px;
-    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    background: linear-gradient(45deg, #ff4d6d, #ff7a9e);
     color: white;
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4);
-    transition: 0.3s;
-    margin-top: 20px;
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+    transition: all 0.4s;
+    margin-top: 30px;
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.6);
+    transform: scale(1.08);
+    box-shadow: 0 12px 30px rgba(255, 77, 109, 0.7);
 }
 
-/* GLOW & ANIMATIONS */
+/* Page 2 - Much More Beautiful & Romantic */
+#page2 {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle at center, #fff0f5 0%, #ff99b3 40%, #ff4d6d 100%);
+    color: #3a0f1f;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    z-index: 30;
+}
+
+#page2 .title {
+    font-size: 4.2rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255,255,255,0.9);
+    margin-bottom: 20px;
+}
+
+#page2 .card {
+    background: rgba(255,255,255,0.85);
+    color: #3a0f1f;
+    border: 2px solid #ff4d6d;
+    box-shadow: 0 10px 40px rgba(255, 77, 109, 0.4);
+}
+
 .glow {
-    text-shadow: 0 0 15px rgba(255, 77, 109, 0.8);
+    text-shadow: 0 0 20px #ff4d6d, 0 0 30px #ff99b3;
 }
 
-.heart, .petal {
+/* Floating Elements */
+.heart, .petal, .kiss {
     position: fixed;
     pointer-events: none;
     z-index: 15;
     user-select: none;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-.pulse-animation {
-    animation: pulse 2s infinite ease-in-out;
-}
-
-/* HOLD TEXT */
-#holdText {
-    position: fixed;
-    bottom: 120px;
-    opacity: 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--primary-pink);
-    text-align: center;
-    width: 100%;
-    z-index: 100;
-}
-
-.corner {
-    position: fixed;
-    bottom: 15px;
-    right: 20px;
-    font-size: 14px;
-    font-weight: 300;
-    opacity: 0.7;
-    z-index: 100;
-}
-
-#counter {
-    font-size: 4rem;
-    background: linear-gradient(to right, #ff4d6d, #ffccd5);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+@keyframes float {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0.9; }
+    100% { transform: translateY(-20vh) rotate(380deg); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- ==================== PAGE 1 ==================== -->
 <div id="page1" class="page">
 
     <div class="section">
@@ -174,8 +150,8 @@ body {
     <div class="section">
         <div class="title">Love Meter</div>
         <div class="card">
-            <h1 id="counter">0%</h1>
-            <p>Tomar jonno amar valobasha unlimited… 100% o kom hoye jai ❤️</p>
+            <h1 id="counter" style="font-size:4.5rem; margin:0;">0%</h1>
+            <p>Tomar jonno amar valobasha unlimited… 100% o kom hoye jay ❤️</p>
         </div>
     </div>
 
@@ -184,9 +160,9 @@ body {
         <div class="card">
             <p>
                 <b>Tumi amar sopno…</b><br> 
-                Jekhane sudhu tumi ar ami thaki. <br><br>
+                Jekhane sudhu tumi ar ami thaki.<br><br>
                 <b>Tumi amar moner shanti…</b><br>
-                Saradin jotoi kosto hok, tomar sathe kotha bolle sob thik hoye jay. <br><br>
+                Saradin jotoi kosto hok, tomar sathe kotha bolle sob thik hoye jay.<br><br>
                 <b>Tumi amar protita hashi ❤️</b>
             </p>
         </div>
@@ -207,7 +183,7 @@ body {
         <div class="card">
             <p>
                 I love you so much Anita 💖<br>  
-                Tumi amar jiboner shera paowa. <br>
+                Tumi amar jiboner shera paowa.<br>
                 Amar sobcheye special manus hoye thakbe sarajibon 💕
             </p>
         </div>
@@ -216,112 +192,112 @@ body {
     </div>
 </div>
 
+<!-- ==================== BEAUTIFUL PAGE 2 ==================== -->
 <div id="page2">
-    <h1 class="title glow pulse-animation" style="font-size: 4rem;">Anita ❤️</h1>
+    <h1 class="title glow">Anita ❤️</h1>
 
-    <div class="card" id="p2card1">
-        <p style="font-size: 1.2rem;">
-            Tumi amar prithibir sobcheye shundor feeling 💖 <br><br>
-            Amar protita nishwas e, protita chintai <br>
-            <b>sudhu tomakei chai</b> ❤️
+    <div class="card" style="max-width:520px;">
+        <p style="font-size:1.25rem; line-height:1.6;">
+            Tumi amar prithibir sobcheye shundor feeling 💖<br><br>
+            Amar protita nishwas e, protita chinta te <b>sudhu tomakei chai</b> ❤️
         </p>
     </div>
 
-    <div class="card" id="p2card2">
-        <p style="font-size: 1.1rem;">
-            Tumi amar sudhu valobasha na…  
-            tumi amar <b>shanti</b> 🌸 <br><br>
-            Tomar oi mishti hashitai amar din bhalo korar jonno jothesto 💕
+    <div class="card" style="max-width:520px;">
+        <p style="font-size:1.2rem; line-height:1.6;">
+            Tumi amar sudhu valobasha na…<br>
+            Tumi amar <b>shanti, happiness, ar sobkichu</b> 🌸
         </p>
     </div>
 
-    <h2 class="special-font glow">I LOVE YOU INFINITY 💞</h2>
-    <p style="font-size: 0.9rem; margin-top: 20px;">(Tumi amar princess, amar sob kichu!)</p>
+    <!-- New Dream Section -->
+    <div class="card" style="max-width:520px;">
+        <p style="font-size:1.25rem;">
+            <b>Tumar Jonno Sopno Dekhechi</b><br><br>
+            Raat e tomake niye shopno dekhi…<br>
+            Amra dujon mile hashi, ghuri, ar ekshathe thaki.<br>
+            Tumi amar queen, ami tomar king 💍<br>
+            Tomar sathe ekta shundor jibon gorte chai.
+        </p>
+    </div>
+
+    <h2 class="special-font glow" style="font-size:3rem; margin:25px 0 10px;">I LOVE YOU INFINITY 💞</h2>
+    <p style="font-size:1.1rem; color:#3a0f1f;">Tumi amar sob kichu… Amar dunia, amar shanti, amar bhalobasha 💕</p>
+
+    <div style="margin-top:30px; font-size:2.5rem;">
+        💋 ❤️ 🌹 💖 💕
+    </div>
 </div>
 
-<div id="holdText">I Love You 💖 You Are My Everything 💞</div>
-<div class="corner">Siyam ❤️ Anita</div>
+<div class="corner" style="position:fixed; bottom:15px; right:20px; font-size:14px; opacity:0.8;">
+    Siyam ❤️ Anita
+</div>
 
 <script>
-// Love Counter logic
+// Love Counter
 let c = 0;
-let int = setInterval(() => {
+const counter = document.getElementById("counter");
+const int = setInterval(() => {
     if (c >= 100) {
-        document.getElementById("counter").innerHTML = "∞%";
+        counter.innerHTML = "∞%";
         clearInterval(int);
     } else {
-        document.getElementById("counter").innerHTML = c + "%";
+        counter.innerHTML = c + "%";
         c++;
     }
-}, 30);
+}, 35);
 
-// GSAP Transition to Page 2
+// Go to Page 2 with beautiful animation
 function goNext() {
-    gsap.to("#page2", {
-        y: 0,
-        duration: 1.5,
-        ease: "expo.inOut",
-        onComplete: () => {
-            // Animate cards inside page 2
-            gsap.from("#p2card1", {opacity: 0, x: -50, duration: 1});
-            gsap.from("#p2card2", {opacity: 0, x: 50, duration: 1, delay: 0.3});
-        }
+    const page2 = document.getElementById("page2");
+    page2.style.display = "flex";
+    
+    gsap.fromTo(page2, 
+        { y: "100%", opacity: 0 }, 
+        { y: "0%", opacity: 1, duration: 1.8, ease: "expo.inOut" }
+    );
+
+    // Animate cards
+    gsap.from(".card", { 
+        opacity: 0, 
+        y: 60, 
+        duration: 1.2, 
+        stagger: 0.3,
+        ease: "power2.out"
     });
 }
 
-// Floating Hearts and Petals logic
-function createFloatingElement(symbol, className) {
+// Floating Hearts, Kisses & Petals
+function createFloatingElement(symbol) {
     let el = document.createElement("div");
     el.innerHTML = symbol;
-    el.className = className;
+    el.style.position = "fixed";
     el.style.left = Math.random() * 100 + "vw";
-    el.style.fontSize = (Math.random() * 20 + 10) + "px";
-    el.style.opacity = Math.random();
-    
-    // Random duration for variety
-    let duration = (Math.random() * 3 + 3);
-    el.style.animation = `float ${duration}s linear forwards`;
-    
+    el.style.fontSize = (Math.random() * 28 + 18) + "px";
+    el.style.opacity = Math.random() * 0.8 + 0.6;
+    el.style.zIndex = 15;
+    el.style.animation = `float ${Math.random() * 4 + 5}s linear forwards`;
     document.body.appendChild(el);
-    setTimeout(() => el.remove(), duration * 1000);
+
+    setTimeout(() => el.remove(), 9000);
 }
 
-// Continuously spawn hearts and petals
 setInterval(() => {
-    createFloatingElement("💖", "heart");
-    createFloatingElement("🌸", "petal");
-}, 400);
+    createFloatingElement("💖");
+    createFloatingElement("💋");
+    createFloatingElement("🌸");
+    createFloatingElement("❤️");
+}, 280);
 
-// Special CSS for Floating Animation
-const styleSheet = document.createElement("style");
-styleSheet.innerText = `
+// Add floating animation style
+const style = document.createElement("style");
+style.innerHTML = `
     @keyframes float {
-        0% { transform: translateY(105vh) rotate(0deg); }
-        100% { transform: translateY(-10vh) rotate(360deg); }
+        0% { transform: translateY(110vh) rotate(0deg); }
+        100% { transform: translateY(-30vh) rotate(420deg); }
     }
 `;
-document.head.appendChild(styleSheet);
-
-// HOLD EFFECT (Long press to show secret message)
-let hold;
-const holdText = document.getElementById("holdText");
-
-const startHold = () => {
-    hold = setTimeout(() => {
-        gsap.to(holdText, {opacity: 1, y: -20, duration: 0.5});
-    }, 400);
-};
-
-const endHold = () => {
-    clearTimeout(hold);
-    gsap.to(holdText, {opacity: 0, y: 0, duration: 0.5});
-};
-
-document.body.addEventListener("mousedown", startHold);
-document.body.addEventListener("mouseup", endHold);
-document.body.addEventListener("touchstart", startHold);
-document.body.addEventListener("touchend", endHold);
-
+document.head.appendChild(style);
 </script>
 
 </body>
