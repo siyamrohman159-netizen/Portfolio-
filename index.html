@@ -3,242 +3,326 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Anita ❤️</title>
+<title>For My Queen Anita ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
 <style>
-body{
-    margin:0;
-    font-family:Poppins;
-    background:#0f0f0f;
-    color:white;
-    overflow-x:hidden;
+:root {
+    --primary-pink: #ff4d6d;
+    --soft-pink: #ffccd5;
+    --deep-pink: #c9184a;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0a;
+    color: white;
+    overflow-x: hidden;
 }
 
 /* PAGE 1 */
-.page{
-    width:100%;
+.page {
+    width: 100%;
+    position: relative;
 }
 
-/* PAGE 2 (FIXED) */
-#page2{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100vh;
-    background:linear-gradient(135deg,#ffccd5,#ff8fab);
-    color:#5a0f2e;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    transform:translateY(100%);
-    z-index:10;
+/* PAGE 2 - THE DREAMY PINK PAGE */
+#page2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(circle, #fff0f3 0%, #ffccd5 100%);
+    color: #5a0f2e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: translateY(100%);
+    z-index: 20;
+    overflow: hidden;
 }
 
-/* SECTION */
-.section{
-    padding:100px 20px;
-    text-align:center;
+/* SECTION STYLING */
+.section {
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 50vh;
 }
 
-.title{
-    font-family:'Playfair Display';
-    font-size:3rem;
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 10px;
 }
 
-.card{
-    max-width:600px;
-    margin:30px auto;
-    padding:25px;
-    border-radius:20px;
-    background:rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
+.special-font {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--primary-pink);
+}
+
+.card {
+    max-width: 500px;
+    width: 85%;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+#page2 .card {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 77, 109, 0.2);
+    color: #5a0f2e;
 }
 
 /* BUTTON */
-.btn{
-    padding:15px 40px;
-    border:none;
-    border-radius:50px;
-    background:#ff4d6d;
-    color:white;
-    cursor:pointer;
+.btn {
+    padding: 18px 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff4d6d, #ff758f);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4);
+    transition: 0.3s;
+    margin-top: 20px;
 }
 
-/* GLOW */
-.glow{
-    text-shadow:0 0 20px rgba(255,100,150,0.6);
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.6);
 }
 
-/* HEART FLOAT */
-.heart{
-    position:fixed;
-    font-size:20px;
-    animation:float 5s linear infinite;
+/* GLOW & ANIMATIONS */
+.glow {
+    text-shadow: 0 0 15px rgba(255, 77, 109, 0.8);
 }
 
-@keyframes float{
-    0%{transform:translateY(100vh);}
-    100%{transform:translateY(-10vh);}
+.heart, .petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 15;
+    user-select: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite ease-in-out;
 }
 
 /* HOLD TEXT */
-#holdText{
-    position:fixed;
-    bottom:100px;
-    opacity:0;
-    font-size:1.5rem;
-    color:#ff4d6d;
+#holdText {
+    position: fixed;
+    bottom: 120px;
+    opacity: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-pink);
+    text-align: center;
+    width: 100%;
+    z-index: 100;
 }
 
-.corner{
-    position:fixed;
-    bottom:10px;
-    right:15px;
-    font-size:13px;
+.corner {
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0.7;
+    z-index: 100;
+}
+
+#counter {
+    font-size: 4rem;
+    background: linear-gradient(to right, #ff4d6d, #ffccd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
 <div id="page1" class="page">
 
-<div class="section">
-    <div class="title glow">Anita 💖</div>
-    <p>You are not just love… you are peace.</p>
-</div>
+    <div class="section">
+        <div class="title glow">Anita 💖</div>
+        <p class="special-font">You are my peace in this chaotic world.</p>
+    </div>
 
-<div class="section">
-    <div class="title">Love Meter</div>
-    <div class="card">
-        <h1 id="counter">0%</h1>
-        <p>Tomar jonno amar valobasha unlimited… 100% o kom hoye jai ❤️</p>
+    <div class="section">
+        <div class="title">Love Meter</div>
+        <div class="card">
+            <h1 id="counter">0%</h1>
+            <p>Tomar jonno amar valobasha unlimited… 100% o kom hoye jai ❤️</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="title">My Feelings</div>
+        <div class="card">
+            <p>
+                <b>Tumi amar sopno…</b><br> 
+                Jekhane sudhu tumi ar ami thaki. <br><br>
+                <b>Tumi amar moner shanti…</b><br>
+                Saradin jotoi kosto hok, tomar sathe kotha bolle sob thik hoye jay. <br><br>
+                <b>Tumi amar protita hashi ❤️</b>
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="title">Chondo</div>
+        <div class="card">
+            <p class="special-font">
+                "Tumi chara din ta adho mone hoy,<br>  
+                Tumi thaklei sob kichu shundor lage ❤️"
+            </p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="title">My Promise</div>
+        <div class="card">
+            <p>
+                I love you so much Anita 💖<br>  
+                Tumi amar jiboner shera paowa. <br>
+                Amar sobcheye special manus hoye thakbe sarajibon 💕
+            </p>
+        </div>
+
+        <button class="btn" onclick="goNext()">Open My Heart ✨</button>
     </div>
 </div>
 
-<div class="section">
-    <div class="title">Some Words</div>
-    <div class="card">
-        <p>
-            Tumi amar sopno…  
-            Tumi amar moner shanti…  
-            Tumi amar protita hashi ❤️  
-        </p>
-    </div>
-</div>
-
-<div class="section">
-    <div class="title">Chondo</div>
-    <div class="card">
-        <p>
-            Tumi chara din ta adho mone hoy,  
-            Tumi thaklei sob kichu shundor lage ❤️  
-        </p>
-    </div>
-</div>
-
-<div class="section">
-    <div class="title">For You</div>
-    <div class="card">
-        <p>
-            I love you so much 💖  
-            You are my girlfriend,  
-            amar sobcheye special manus 💕  
-        </p>
-    </div>
-
-    <button class="btn" onclick="goNext()">Continue ✨</button>
-</div>
-
-</div>
-
-<!-- PAGE 2 (UPDATED PINK LOVE PAGE) -->
 <div id="page2">
+    <h1 class="title glow pulse-animation" style="font-size: 4rem;">Anita ❤️</h1>
 
-    <h1 class="title glow">Anita ❤️</h1>
-
-    <div class="card">
-        <p>
-            Tumi amar sobcheye shundor feeling 💖 <br><br>
-            Amar protita din, protita moment e  
-            sudhu tomakei chai ❤️
+    <div class="card" id="p2card1">
+        <p style="font-size: 1.2rem;">
+            Tumi amar prithibir sobcheye shundor feeling 💖 <br><br>
+            Amar protita nishwas e, protita chintai <br>
+            <b>sudhu tomakei chai</b> ❤️
         </p>
     </div>
 
-    <div class="card">
-        <p>
-            Tumi amar valobasha na…  
-            tumi amar shanti 🌸 <br><br>
-            Tumi thaklei sob perfect lage 💕
+    <div class="card" id="p2card2">
+        <p style="font-size: 1.1rem;">
+            Tumi amar sudhu valobasha na…  
+            tumi amar <b>shanti</b> 🌸 <br><br>
+            Tomar oi mishti hashitai amar din bhalo korar jonno jothesto 💕
         </p>
     </div>
 
-    <h1 class="title glow">I LOVE YOU SO MUCH 💞</h1>
-
+    <h2 class="special-font glow">I LOVE YOU INFINITY 💞</h2>
+    <p style="font-size: 0.9rem; margin-top: 20px;">(Tumi amar princess, amar sob kichu!)</p>
 </div>
 
 <div id="holdText">I Love You 💖 You Are My Everything 💞</div>
-<div class="corner">Siyam + Anita</div>
+<div class="corner">Siyam ❤️ Anita</div>
 
 <script>
+// Love Counter logic
+let c = 0;
+let int = setInterval(() => {
+    if (c >= 100) {
+        document.getElementById("counter").innerHTML = "∞%";
+        clearInterval(int);
+    } else {
+        document.getElementById("counter").innerHTML = c + "%";
+        c++;
+    }
+}, 30);
 
-// Counter
-let c=0;
-let int=setInterval(()=>{
-    if(c>=100) clearInterval(int);
-    document.getElementById("counter").innerHTML=c+"%";
-    c++;
-},20);
-
-// FIXED PAGE TRANSITION
-function goNext(){
-    gsap.to("#page2",{y:0,duration:1,ease:"power3.inOut"});
+// GSAP Transition to Page 2
+function goNext() {
+    gsap.to("#page2", {
+        y: 0,
+        duration: 1.5,
+        ease: "expo.inOut",
+        onComplete: () => {
+            // Animate cards inside page 2
+            gsap.from("#p2card1", {opacity: 0, x: -50, duration: 1});
+            gsap.from("#p2card2", {opacity: 0, x: 50, duration: 1, delay: 0.3});
+        }
+    });
 }
 
-// Floating hearts
-setInterval(()=>{
-    let h=document.createElement("div");
-    h.innerHTML="💖";
-    h.className="heart";
-    h.style.left=Math.random()*100+"vw";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),5000);
-},400);
+// Floating Hearts and Petals logic
+function createFloatingElement(symbol, className) {
+    let el = document.createElement("div");
+    el.innerHTML = symbol;
+    el.className = className;
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = (Math.random() * 20 + 10) + "px";
+    el.style.opacity = Math.random();
+    
+    // Random duration for variety
+    let duration = (Math.random() * 3 + 3);
+    el.style.animation = `float ${duration}s linear forwards`;
+    
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), duration * 1000);
+}
 
-// HOLD EFFECT
+// Continuously spawn hearts and petals
+setInterval(() => {
+    createFloatingElement("💖", "heart");
+    createFloatingElement("🌸", "petal");
+}, 400);
+
+// Special CSS for Floating Animation
+const styleSheet = document.createElement("style");
+styleSheet.innerText = `
+    @keyframes float {
+        0% { transform: translateY(105vh) rotate(0deg); }
+        100% { transform: translateY(-10vh) rotate(360deg); }
+    }
+`;
+document.head.appendChild(styleSheet);
+
+// HOLD EFFECT (Long press to show secret message)
 let hold;
-const holdText=document.getElementById("holdText");
+const holdText = document.getElementById("holdText");
 
-document.body.addEventListener("mousedown",()=>{
-    hold=setTimeout(()=>{
-        gsap.to(holdText,{opacity:1,y:-20});
-    },600);
-});
+const startHold = () => {
+    hold = setTimeout(() => {
+        gsap.to(holdText, {opacity: 1, y: -20, duration: 0.5});
+    }, 400);
+};
 
-document.body.addEventListener("mouseup",()=>{
+const endHold = () => {
     clearTimeout(hold);
-    gsap.to(holdText,{opacity:0,y:0});
-});
+    gsap.to(holdText, {opacity: 0, y: 0, duration: 0.5});
+};
 
-document.body.addEventListener("touchstart",()=>{
-    hold=setTimeout(()=>{
-        gsap.to(holdText,{opacity:1,y:-20});
-    },600);
-});
-
-document.body.addEventListener("touchend",()=>{
-    clearTimeout(hold);
-    gsap.to(holdText,{opacity:0,y:0});
-});
+document.body.addEventListener("mousedown", startHold);
+document.body.addEventListener("mouseup", endHold);
+document.body.addEventListener("touchstart", startHold);
+document.body.addEventListener("touchend", endHold);
 
 </script>
 
 </body>
-    </html>
+</html>
