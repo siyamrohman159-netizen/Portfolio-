@@ -14,98 +14,87 @@ body{
     font-family:Poppins;
     background:#0f0f0f;
     color:white;
-    overflow:hidden;
+    overflow-x:hidden;
 }
 
-/* Pages */
+/* PAGE */
 .page{
-    position:absolute;
     width:100%;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    min-height:100vh;
+}
+
+/* SECTION */
+.section{
+    padding:100px 20px;
     text-align:center;
-    padding:20px;
 }
 
-/* First Page */
-#page1{
-    background:linear-gradient(135deg,#1a1a1a,#2a2a2a);
-}
-
-/* Second Page */
-#page2{
-    background:black;
-    transform:translateY(100%);
-}
-
-/* Title */
+/* TITLE */
 .title{
-    font-family: 'Playfair Display';
-    font-size:3.5rem;
-    letter-spacing:2px;
+    font-family:'Playfair Display';
+    font-size:3rem;
+    margin-bottom:20px;
 }
 
-/* Glow */
-.glow{
-    text-shadow:0 0 10px rgba(255,100,150,0.6);
-}
-
-/* Subtitle */
+/* SUB */
 .sub{
     opacity:0.7;
-    margin-top:10px;
 }
 
-/* Card */
+/* CARD */
 .card{
-    margin-top:30px;
+    max-width:600px;
+    margin:30px auto;
     padding:25px;
     border-radius:20px;
     background:rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
-    max-width:400px;
 }
 
-/* Button */
+/* BUTTON */
 .btn{
-    margin-top:30px;
-    padding:14px 35px;
-    border-radius:50px;
+    padding:15px 40px;
     border:none;
+    border-radius:50px;
     background:#ff4d6d;
     color:white;
-    font-size:1rem;
     cursor:pointer;
-    transition:0.3s;
-}
-.btn:hover{
-    transform:scale(1.05);
+    margin-top:40px;
 }
 
-/* Corner */
-.corner{
+/* PAGE2 */
+#page2{
     position:fixed;
-    bottom:10px;
-    right:15px;
-    font-size:13px;
-    opacity:0.6;
+    top:0;
+    left:0;
+    background:black;
+    width:100%;
+    height:100vh;
+    transform:translateY(100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
 }
 
-/* Hold text */
+/* GLOW */
+.glow{
+    text-shadow:0 0 15px rgba(255,100,150,0.6);
+}
+
+/* HOLD TEXT */
 #holdText{
-    position:absolute;
-    bottom:80px;
+    position:fixed;
+    bottom:100px;
     opacity:0;
     font-size:1.5rem;
     color:#ff4d6d;
 }
 
-/* Floating soft particles */
+/* PARTICLES */
 .particle{
-    position:absolute;
+    position:fixed;
     width:6px;
     height:6px;
     background:#ff4d6d;
@@ -118,6 +107,14 @@ body{
     0%{transform:translateY(100vh);}
     100%{transform:translateY(-10vh);}
 }
+
+.corner{
+    position:fixed;
+    bottom:10px;
+    right:15px;
+    font-size:13px;
+    opacity:0.6;
+}
 </style>
 </head>
 
@@ -125,90 +122,143 @@ body{
 
 <!-- PAGE 1 -->
 <div id="page1" class="page">
-    <div class="title glow">Anita</div>
-    <div class="sub">You feel like peace.</div>
 
+<!-- HERO -->
+<div class="section">
+    <div class="title glow">Anita 💖</div>
+    <p class="sub">You are not just love… you are peace.</p>
+</div>
+
+<!-- LOVE METER -->
+<div class="section">
+    <div class="title">Love Meter</div>
+    <div class="card">
+        <h1 id="counter">0%</h1>
+        <p>Tomar jonno amar valobasha unlimited… 100% o kom hoye jai ❤️</p>
+    </div>
+</div>
+
+<!-- TEXT SECTION -->
+<div class="section">
+    <div class="title">Some Words</div>
     <div class="card">
         <p>
-            Amar jibone tomar jayga sob somoy full thakbe…  
-            kono percent diye measure kora jai na 💖
+            Tumi amar sopno…  
+            Tumi amar moner shanti…  
+            Tumi amar protita hashi ❤️  
+        </p>
+    </div>
+</div>
+
+<!-- CHONDO -->
+<div class="section">
+    <div class="title">Chondo</div>
+    <div class="card">
+        <p>
+            Tumi chara din ta adho mone hoy,  
+            Tumi thaklei sob kichu shundor lage ❤️  
+        </p>
+    </div>
+</div>
+
+<!-- LOVE MESSAGE -->
+<div class="section">
+    <div class="title">For You</div>
+    <div class="card">
+        <p>
+            I love you so much 💖  
+            You are my girlfriend,  
+            amar sobcheye special manus 💕  
         </p>
     </div>
 
-    <button class="btn" onclick="goNext()">Continue</button>
+    <button class="btn" onclick="goNext()">Continue ✨</button>
+</div>
+
 </div>
 
 <!-- PAGE 2 -->
-<div id="page2" class="page">
+<div id="page2">
 
-    <div class="title glow">Black Love</div>
+    <div class="title glow">Anita ❤️</div>
 
     <div class="card">
         <p>
-            Anita, tumi amar moner shanti…<br>
-            tumi amar shobcheye soft feeling ❤️<br><br>
-            Kono show-off na… sudhu ekta kotha—  
-            tumi thaklei sob thik lage.
+            Amar jiboner sobcheye beautiful part holo tumi…  
+            Tumi chara amar kono meaning nai 💔➡️❤️  
         </p>
     </div>
 
-    <div class="title glow" style="font-size:2.5rem;margin-top:30px;">
-        I LOVE YOU
+    <div class="title glow" style="font-size:2.5rem;">
+        I LOVE YOU SO MUCH 💞
     </div>
-
-    <div id="holdText">I Love You 💞</div>
 
 </div>
 
+<div id="holdText">I Love You 💖 You Mean Everything 💞</div>
 <div class="corner">Siyam + Anita</div>
 
 <script>
 
-// Smooth intro
-gsap.from(".title",{y:-40,opacity:0,duration:1.5});
-gsap.from(".card",{opacity:0,y:30,duration:1,delay:0.5});
+// COUNTER
+let c=0;
+let int=setInterval(()=>{
+    if(c>=100) clearInterval(int);
+    document.getElementById("counter").innerHTML=c+"%";
+    c++;
+},20);
 
-// Page switch
-function goNext(){
-    gsap.to("#page1",{y:"-100%",duration:1});
-    gsap.to("#page2",{y:"0%",duration:1});
-}
-
-// Soft particles
+// PARTICLES
 setInterval(()=>{
     let p=document.createElement("div");
     p.className="particle";
     p.style.left=Math.random()*100+"vw";
     document.body.appendChild(p);
-
     setTimeout(()=>p.remove(),10000);
-},500);
+},400);
+
+// PAGE SWITCH
+function goNext(){
+    gsap.to("#page2",{y:"0%",duration:1});
+}
 
 // HOLD EFFECT
-let holdTimer;
+let hold;
 const holdText=document.getElementById("holdText");
 
 document.body.addEventListener("mousedown",()=>{
-    holdTimer=setTimeout(()=>{
+    hold=setTimeout(()=>{
         gsap.to(holdText,{opacity:1,y:-20,duration:0.5});
     },600);
 });
 
 document.body.addEventListener("mouseup",()=>{
-    clearTimeout(holdTimer);
-    gsap.to(holdText,{opacity:0,y:0,duration:0.5});
+    clearTimeout(hold);
+    gsap.to(holdText,{opacity:0,y:0});
 });
 
-// Mobile support
 document.body.addEventListener("touchstart",()=>{
-    holdTimer=setTimeout(()=>{
+    hold=setTimeout(()=>{
         gsap.to(holdText,{opacity:1,y:-20,duration:0.5});
     },600);
 });
 
 document.body.addEventListener("touchend",()=>{
-    clearTimeout(holdTimer);
-    gsap.to(holdText,{opacity:0,y:0,duration:0.5});
+    clearTimeout(hold);
+    gsap.to(holdText,{opacity:0,y:0});
+});
+
+// SCROLL ANIMATION
+gsap.utils.toArray(".section").forEach(sec=>{
+    gsap.from(sec,{
+        opacity:0,
+        y:50,
+        duration:1,
+        scrollTrigger:{
+            trigger:sec,
+            start:"top 80%"
+        }
+    });
 });
 
 </script>
