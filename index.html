@@ -1,305 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Siyuu's ! Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Nikita anita ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ffccd5;
+            --dark: #590d22;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff0f3;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            color: var(--dark);
+        }
 
-<style>
-:root{--red:#ff0000;}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#eee;font-family:Poppins;overflow-x:hidden}
+        /* Floating Hearts Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-/* Horror BG */
-body::before{
-content:"";
-position:fixed;width:100%;height:100%;
-background:url('https://i.imgur.com/8Km9tLL.png');
-opacity:0.05;
-z-index:-2;
-}
-body::after{
-content:"";
-position:fixed;width:100%;height:100%;
-background:radial-gradient(circle,transparent 40%,black 100%);
-z-index:-1;
-}
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
 
-/* Loader */
-#loader{
-position:fixed;width:100%;height:100vh;background:#000;
-display:flex;flex-direction:column;justify-content:center;align-items:center;
-z-index:9999;
-}
-.spinner{
-width:60px;height:60px;border:6px solid #111;
-border-top:6px solid red;border-radius:50%;
-animation:spin 1s linear infinite;
-}
-.loading-text{
-margin-top:15px;color:red;font-family:Creepster;
-animation:flicker 1.5s infinite;
-}
-@keyframes spin{100%{transform:rotate(360deg)}}
-@keyframes flicker{50%{opacity:0.3}}
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            color: var(--primary);
+            margin: 0;
+            opacity: 0;
+        }
 
-/* Scroll bar */
-#scroll-bar{position:fixed;top:0;left:0;height:4px;background:red;width:0%}
+        .sub-text {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+        }
 
-/* Particles */
-#particles-js{position:fixed;inset:0;z-index:-3}
+        /* Love Meter Section */
+        .section {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
 
-/* Hero */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;transform:translateY(30px);transition:1s}
-.hero.show{opacity:1;transform:translateY(0);}
-.hero img{width:200px;border-radius:50%;border:3px solid red;box-shadow:0 0 40px red;transition:.5s}
-.hero img:hover{transform:scale(1.1);box-shadow:0 0 80px red,0 0 120px darkred}
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
+            margin-bottom: 50px;
+            transform: translateY(50px);
+            opacity: 0;
+        }
 
-.logo{position:absolute;top:20px;left:20px;font-family:Creepster;font-size:40px;color:red;opacity:0;transform:translateX(-30px);transition:1s}
-.logo.show{opacity:1;transform:translateX(0);}
-.name{font-family:Creepster;font-size:50px;color:red;opacity:0;transition:1s;}
-.name.show{opacity:1;}
-.tag{color:#aaa;margin-top:10px;opacity:0;transition:1s;}
-.tag.show{opacity:1;}
+        .love-percent {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
 
-/* Cards */
-.section{max-width:900px;margin:60px auto;padding:20px}
-.card{
-  background:#0a0a0a;
-  padding:25px;
-  border-radius:15px;
-  border:1px solid #300;
-  box-shadow:0 0 20px #ff000033;
-  margin-bottom:30px;
-  opacity:0;
-  transform:translateY(30px);
-  transition:1s;
-}
-.card.show{opacity:1;transform:translateY(0);}
+        /* Heart Animation */
+        .heart-loader {
+            position: relative;
+            width: 100px;
+            height: 90px;
+            margin: 20px auto;
+        }
 
-/* Skills bars */
-.bar{height:12px;background:#111;border-radius:20px;margin-top:5px;overflow:hidden}
-.fill{height:100%;background:red}
+        .heart-loader::before,
+        .heart-loader::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 52px;
+            height: 80px;
+            border-radius: 50px 50px 0 0;
+            background: var(--primary);
+        }
 
-/* Projects */
-.project{padding:15px;margin:10px 0;background:#111;border-radius:10px;cursor:pointer;transition:.4s}
-.project:hover{background:#1a0000;transform:translateX(10px)}
+        .heart-loader::before {
+            left: 50px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
 
-/* Socials */
-.socials{display:flex;justify-content:center;gap:25px;margin-top:20px}
-.socials i{font-size:28px;cursor:pointer;transition:.3s}
-.socials i:hover{color:red;transform:scale(1.2)}
+        .heart-loader::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
 
-/* Badges */
-.badge{background:#1a0000;color:#ff4d4d;padding:5px 15px;border-radius:5px;font-size:14px;border:1px solid #400000;margin-right:5px}
+        /* Button */
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
 
-/* API PAGE */
-#api-page{display:none; padding:20px;}
-#api-page h1{text-align:center;font-family:Creepster;color:red;margin-bottom:30px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
-.api-card{background:#0a0a0a;border:1px solid #300;padding:15px;border-radius:10px;transition:.3s;}
-.api-card:hover{transform:scale(1.05);box-shadow:0 0 10px red}
-.api-card .name{color:#ff4d4d;font-size:18px;font-weight:bold;}
-.api-card .link{font-size:12px;color:#aaa;word-break:break-all;margin-top:5px;}
-.api-card button{margin-top:10px;padding:6px 12px;background:red;border:none;color:#fff;cursor:pointer;border-radius:5px}
-.back-btn{margin-bottom:20px;padding:8px 15px;background:red;color:#fff;cursor:pointer;border:none;border-radius:6px}
+        .btn:hover {
+            transform: scale(1.1);
+            background: #c9184a;
+        }
 
-audio{display:none}
-</style>
+        footer {
+            padding: 40px;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+    </style>
 </head>
 <body>
 
-<audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
+    <div id="particles-js"></div>
 
-<!-- Loader -->
-<div id="loader">
-<div class="spinner"></div>
-<div class="loading-text">LOADING...</div>
-</div>
+    <section class="hero">
+        <h1 id="main-title">anita</h1>
+        <p class="sub-text">You are my whole world</p>
+        <div class="heart-loader"></div>
+    </section>
 
-<div id="scroll-bar"></div>
-<div id="particles-js"></div>
+    <section class="section">
+        <div class="card" id="love-card">
+            <h2>Love Percentage for You</h2>
+            <div class="love-percent" id="counter">0%</div>
+            <p>Amar jibone tomar jayga sob somoy 100% thakbe.</p>
+        </div>
 
-<!-- HERO -->
-<div class="hero" id="hero-section">
-<div class="logo">SIYUU</div>
-<img src="https://i.imgur.com/guUKCj0.jpeg">
-<div class="name">SHAHARIYA AHMMED SIYAM</div>
-<div class="tag" id="typing-text"></div>
-</div>
+        <div class="card" id="message-card">
+            <h3>Kichu Kotha...</h3>
+            <p>"anita, tumi jano na tumi amar kache koto special. Ei chotto website-ta sudhu tomar smile-er jonne banano."</p>
+            <button class="btn" onclick="sayLove()">Click for Magic</button>
+        </div>
+    </section>
 
-<!-- MAIN SECTION -->
-<div class="section" id="main-section">
+    <footer align="center">
+        Made with ❤️ for anita
+    </footer>
 
-<!-- SKILLS -->
-<div class="card">
-<h2>Skills</h2>
-<div style="margin-top:10px">
-<div>HTML</div>
-<div class="bar"><div class="fill" style="width:92%"></div></div>
-<small>Structure & layout build korte expert.<br>Responsive design e master.</small>
-</div>
+    <script>
+        // GSAP Animations
+        window.onload = () => {
+            const tl = gsap.timeline();
 
-<div style="margin-top:10px">
-<div>CSS</div>
-<div class="bar"><div class="fill" style="width:88%"></div></div>
-<small>Modern UI & animation e strong.<br>Dark theme & hover effects pro.</small>
-</div>
+            tl.to("#main-title", { opacity: 1, y: -20, duration: 1.5, ease: "power4.out" })
+              .to(".sub-text", { opacity: 1, duration: 1 }, "-=0.5")
+              .to(".heart-loader", { scale: 1.2, repeat: -1, yoyo: true, duration: 0.6 });
 
-<div style="margin-top:10px">
-<div>JavaScript</div>
-<div class="bar"><div class="fill" style="width:90%"></div></div>
-<small>Dynamic system & bot logic.<br>Frontend interactivity master.</small>
-</div>
+            // Scroll Trigger Animation (Simple)
+            window.addEventListener('scroll', () => {
+                const cards = document.querySelectorAll('.card');
+                cards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    if(cardTop < window.innerHeight - 100) {
+                        gsap.to(card, { opacity: 1, y: 0, duration: 1, ease: "back.out(1.7)" });
+                    }
+                });
+                
+                // Love counter animation
+                if(document.getElementById('love-card').style.opacity == 1) {
+                    animateValue("counter", 0, 100, 2000);
+                }
+            });
+        };
 
-<div style="margin-top:10px">
-<div>Node.js</div>
-<div class="bar"><div class="fill" style="width:85%"></div></div>
-<small>Backend & GoatBot developer.<br>Server & API integration expert.</small>
-</div>
+        // Love Counter Function
+        function animateValue(id, start, end, duration) {
+            let obj = document.getElementById(id);
+            if (obj.innerHTML !== "0%") return; // Prevent restart
+            
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start) + "%";
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
 
-<div style="margin-top:10px">
-<div>Python</div>
-<div class="bar"><div class="fill" style="width:80%"></div></div>
-<small>Automation & API system build.<br>Data handling & scripting master.</small>
-</div>
-</div>
+        // Magic Button Interaction
+        function sayLove() {
+            alert("Nikita anita, I Love You More Than Anything! 💖");
+            for(let i=0; i<15; i++) {
+                createHeart();
+            }
+        }
 
-<!-- Projects -->
-<div class="card">
-<h2>Projects</h2>
-<div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">Messenger GoatBot</div>
-<div class="project" onclick="showAPI()">ALL API</div>
-<div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">Instagram Bot</div>
-</div>
+        // Floating Hearts Generator
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+            heart.style.zIndex = '1000';
+            heart.style.pointerEvents = 'none';
+            document.body.appendChild(heart);
 
-<!-- Personal Info -->
-<div class="card" style="text-align:center">
-<h2>Personal Info</h2>
-<span class="badge">📍 Jamalpur</span>
-<span class="badge">🟢 Online</span>
-<span class="badge">💻 Coding...</span>
-<div class="socials">
-<i class="fa-brands fa-facebook-messenger" onclick="openLink('https://m.me/siyuuuuuuuuuuuuuuu')"></i>
-<i class="fa-brands fa-github" onclick="openLink('https://github.com/siyuuu-x1/Maiko-goatbot-v2')"></i>
-<i class="fa-brands fa-whatsapp" onclick="openLink('https://wa.me/8801603604722')"></i>
-</div>
-</div>
-
-</div>
-
-<!-- API PAGE -->
-<div id="api-page">
-<button class="back-btn" onclick="hideAPI()">⬅ Back</button>
-<h1>🔥 ALL API 🔥</h1>
-<div class="grid" id="api-container"></div>
-</div>
-
-<script>
-// Loader
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    document.getElementById("loader").style.opacity="0";
-    setTimeout(()=>{loader.style.display="none"},500);
-    // show hero & cards animation
-    document.querySelector(".hero").classList.add("show");
-    document.querySelector(".logo").classList.add("show");
-    document.querySelector(".name").classList.add("show");
-    document.querySelector(".tag").classList.add("show");
-    document.querySelectorAll(".card").forEach((c,i)=>{
-      setTimeout(()=>{c.classList.add("show")}, i*200);
-    });
-  },800);
-});
-
-// Typing animation
-const text=" GoatBot Developer ⚡";
-let i=0;
-function typing(){
-if(i<text.length){
-document.getElementById("typing-text").innerHTML+=text.charAt(i);
-i++;setTimeout(typing,50);
-}}
-typing();
-
-// Scroll
-window.addEventListener('scroll',()=>{
-let s=document.documentElement.scrollTop;
-let h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-document.getElementById("scroll-bar").style.width=(s/h)*100+"%";
-});
-
-// Open Link
-function openLink(url){
-document.getElementById("clickSound").play();
-window.open(url,'_blank');
-}
-
-// Particles
-particlesJS("particles-js",{particles:{number:{value:80},color:{value:"#ff0000"},line_linked:{enable:true,color:"#ff0000"},move:{speed:1}}});
-
-// API Data
-const apiData={
-  anisearch:"https://xalman-anisearch-apis-s5yv.onrender.com",
-  album:"https://nx-album-apix.onrender.com",
-  font:"https://xalman-font-apis-dbv8.onrender.com",
-  cdp:"https://nx-cdp-apis-cqss.onrender.com",
-  quiz:"https://xalman-quiz-apis-6s9k.onrender.com",
-  math:"https://xalman-mathgame-apis.onrender.com",
-  meme:"https://nx-meme-apis.onrender.com",
-  autodl:"https://xalman-autodl-apis.onrender.com",
-  tikdl:"https://xalman-tikdl.onrender.com",
-  lyrics:"https://xalman-lyrics-apis.onrender.com",
-  flux:"https://xalman-flux-apis.onrender.com",
-  rbg:"https://xalman-removebg-apis.onrender.com",
-  "4k":"https://xalman-4k-apis.onrender.com",
-  imgbb:"https://xalman-imgbb-apis-8qnx.onrender.com",
-  freeimg:"https://xalman-freeimageupload-apis.onrender.com",
-  catbox:"https://xalman-catbox-apis.onrender.com",
-  ss:"https://xalman-screenshot-apis.onrender.com",
-  trans:"https://xalman-translate-apis.onrender.com",
-  mixmean:"https://xalman-emojimean-and-mix.onrender.com",
-  tm:"https://xalman-tempmail-apis.onrender.com",
-  chat:"https://xalman-aichat-apis.onrender.com",
-  pin:"https://xalman-pinterest-apis.onrender.com",
-  bomb:"https://xalman-bomber-jsaz.onrender.com",
-  prompt:"https://xalman-prompt-apis.onrender.com"
-};
-
-// Show API
-function showAPI(){
-document.getElementById("main-section").style.display="none";
-document.getElementById("api-page").style.display="block";
-
-const container=document.getElementById("api-container");
-container.innerHTML=""; // clear old
-
-for(let key in apiData){
-  let div=document.createElement("div");
-  div.className="api-card";
-  div.innerHTML=`<div class="name">${key}</div>
-  <div class="link">${apiData[key]}</div>
-  <button onclick="copyAPI('${key}')">Copy</button>`;
-  container.appendChild(div);
-}
-}
-
-// Hide API
-function hideAPI(){
-document.getElementById("api-page").style.display="none";
-document.getElementById("main-section").style.display="block";
-}
-
-// Copy API
-function copyAPI(id){
-navigator.clipboard.writeText(apiData[id]);
-alert(`Copied: ${apiData[id]}`);
-}
-</script>
-
+            gsap.to(heart, {
+                y: -window.innerHeight - 100,
+                x: (Math.random() - 0.5) * 200,
+                opacity: 0,
+                duration: 2 + Math.random() * 2,
+                onComplete: () => heart.remove()
+            });
+        }
+    </script>
 </body>
 </html>
