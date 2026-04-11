@@ -17,10 +17,27 @@ body{
     overflow-x:hidden;
 }
 
-/* PAGE */
+/* PAGE 1 */
 .page{
     width:100%;
-    min-height:100vh;
+}
+
+/* PAGE 2 (FIXED) */
+#page2{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:linear-gradient(135deg,#ffccd5,#ff8fab);
+    color:#5a0f2e;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    transform:translateY(100%);
+    z-index:10;
 }
 
 /* SECTION */
@@ -29,25 +46,17 @@ body{
     text-align:center;
 }
 
-/* TITLE */
 .title{
     font-family:'Playfair Display';
     font-size:3rem;
-    margin-bottom:20px;
 }
 
-/* SUB */
-.sub{
-    opacity:0.7;
-}
-
-/* CARD */
 .card{
     max-width:600px;
     margin:30px auto;
     padding:25px;
     border-radius:20px;
-    background:rgba(255,255,255,0.05);
+    background:rgba(255,255,255,0.2);
     backdrop-filter: blur(10px);
 }
 
@@ -59,28 +68,23 @@ body{
     background:#ff4d6d;
     color:white;
     cursor:pointer;
-    margin-top:40px;
-}
-
-/* PAGE2 */
-#page2{
-    position:fixed;
-    top:0;
-    left:0;
-    background:black;
-    width:100%;
-    height:100vh;
-    transform:translateY(100%);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
 }
 
 /* GLOW */
 .glow{
-    text-shadow:0 0 15px rgba(255,100,150,0.6);
+    text-shadow:0 0 20px rgba(255,100,150,0.6);
+}
+
+/* HEART FLOAT */
+.heart{
+    position:fixed;
+    font-size:20px;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-10vh);}
 }
 
 /* HOLD TEXT */
@@ -92,28 +96,11 @@ body{
     color:#ff4d6d;
 }
 
-/* PARTICLES */
-.particle{
-    position:fixed;
-    width:6px;
-    height:6px;
-    background:#ff4d6d;
-    border-radius:50%;
-    opacity:0.3;
-    animation:float 10s linear infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(100vh);}
-    100%{transform:translateY(-10vh);}
-}
-
 .corner{
     position:fixed;
     bottom:10px;
     right:15px;
     font-size:13px;
-    opacity:0.6;
 }
 </style>
 </head>
@@ -123,13 +110,11 @@ body{
 <!-- PAGE 1 -->
 <div id="page1" class="page">
 
-<!-- HERO -->
 <div class="section">
     <div class="title glow">Anita 💖</div>
-    <p class="sub">You are not just love… you are peace.</p>
+    <p>You are not just love… you are peace.</p>
 </div>
 
-<!-- LOVE METER -->
 <div class="section">
     <div class="title">Love Meter</div>
     <div class="card">
@@ -138,7 +123,6 @@ body{
     </div>
 </div>
 
-<!-- TEXT SECTION -->
 <div class="section">
     <div class="title">Some Words</div>
     <div class="card">
@@ -150,7 +134,6 @@ body{
     </div>
 </div>
 
-<!-- CHONDO -->
 <div class="section">
     <div class="title">Chondo</div>
     <div class="card">
@@ -161,7 +144,6 @@ body{
     </div>
 </div>
 
-<!-- LOVE MESSAGE -->
 <div class="section">
     <div class="title">For You</div>
     <div class="card">
@@ -177,30 +159,37 @@ body{
 
 </div>
 
-<!-- PAGE 2 -->
+<!-- PAGE 2 (UPDATED PINK LOVE PAGE) -->
 <div id="page2">
 
-    <div class="title glow">Anita ❤️</div>
+    <h1 class="title glow">Anita ❤️</h1>
 
     <div class="card">
         <p>
-            Amar jiboner sobcheye beautiful part holo tumi…  
-            Tumi chara amar kono meaning nai 💔➡️❤️  
+            Tumi amar sobcheye shundor feeling 💖 <br><br>
+            Amar protita din, protita moment e  
+            sudhu tomakei chai ❤️
         </p>
     </div>
 
-    <div class="title glow" style="font-size:2.5rem;">
-        I LOVE YOU SO MUCH 💞
+    <div class="card">
+        <p>
+            Tumi amar valobasha na…  
+            tumi amar shanti 🌸 <br><br>
+            Tumi thaklei sob perfect lage 💕
+        </p>
     </div>
+
+    <h1 class="title glow">I LOVE YOU SO MUCH 💞</h1>
 
 </div>
 
-<div id="holdText">I Love You 💖 You Mean Everything 💞</div>
+<div id="holdText">I Love You 💖 You Are My Everything 💞</div>
 <div class="corner">Siyam + Anita</div>
 
 <script>
 
-// COUNTER
+// Counter
 let c=0;
 let int=setInterval(()=>{
     if(c>=100) clearInterval(int);
@@ -208,19 +197,20 @@ let int=setInterval(()=>{
     c++;
 },20);
 
-// PARTICLES
-setInterval(()=>{
-    let p=document.createElement("div");
-    p.className="particle";
-    p.style.left=Math.random()*100+"vw";
-    document.body.appendChild(p);
-    setTimeout(()=>p.remove(),10000);
-},400);
-
-// PAGE SWITCH
+// FIXED PAGE TRANSITION
 function goNext(){
-    gsap.to("#page2",{y:"0%",duration:1});
+    gsap.to("#page2",{y:0,duration:1,ease:"power3.inOut"});
 }
+
+// Floating hearts
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.innerHTML="💖";
+    h.className="heart";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+},400);
 
 // HOLD EFFECT
 let hold;
@@ -228,7 +218,7 @@ const holdText=document.getElementById("holdText");
 
 document.body.addEventListener("mousedown",()=>{
     hold=setTimeout(()=>{
-        gsap.to(holdText,{opacity:1,y:-20,duration:0.5});
+        gsap.to(holdText,{opacity:1,y:-20});
     },600);
 });
 
@@ -239,7 +229,7 @@ document.body.addEventListener("mouseup",()=>{
 
 document.body.addEventListener("touchstart",()=>{
     hold=setTimeout(()=>{
-        gsap.to(holdText,{opacity:1,y:-20,duration:0.5});
+        gsap.to(holdText,{opacity:1,y:-20});
     },600);
 });
 
@@ -248,20 +238,7 @@ document.body.addEventListener("touchend",()=>{
     gsap.to(holdText,{opacity:0,y:0});
 });
 
-// SCROLL ANIMATION
-gsap.utils.toArray(".section").forEach(sec=>{
-    gsap.from(sec,{
-        opacity:0,
-        y:50,
-        duration:1,
-        scrollTrigger:{
-            trigger:sec,
-            start:"top 80%"
-        }
-    });
-});
-
 </script>
 
 </body>
-</html>
+    </html>
