@@ -1,146 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anita + Siyam ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        :root { --primary: #ff4d6d; --secondary: #ffccd5; --dark: #590d22; }
-        body { margin: 0; background: #fff0f3; font-family: 'Poppins', sans-serif; overflow-x: hidden; color: var(--dark); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Anita ❤️</title>
 
-        /* Corner Names */
-        .couple-names {
-            position: fixed;
-            top: 15px;
-            right: 20px;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
-            color: var(--primary);
-            z-index: 100;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        h1 { font-family: 'Dancing Script', cursive; font-size: 5rem; color: var(--primary); margin: 0; }
+<style>
+body{
+    margin:0;
+    font-family:Poppins;
+    overflow:hidden;
+}
 
-        /* Secret Page Overlay */
-        #magic-page {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: white;
-            z-index: 1000;
-            display: none; /* Hidden initially */
-            flex-direction: column;
-            align-items: center;
-            padding: 50px 20px;
-            overflow-y: auto;
-            text-align: center;
-        }
+/* Page 1 */
+#page1{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#fff0f3,#ffe5ec);
+}
 
-        .poem {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            line-height: 1.6;
-            color: var(--dark);
-            max-width: 600px;
-            margin: 40px auto;
-            opacity: 0;
-            transform: translateY(30px);
-        }
+/* Page 2 */
+#page2{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:black;
+    color:white;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    transform:translateY(100%);
+}
 
-        .iloveyou-anim {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary);
-            animation: pulse 1.5s infinite;
-        }
+/* Title */
+h1{
+    font-family:'Dancing Script';
+    font-size:4rem;
+    color:#ff4d6d;
+}
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); text-shadow: 0 0 20px rgba(255,77,109,0.5); }
-            100% { transform: scale(1); }
-        }
+/* Button */
+.btn{
+    padding:15px 40px;
+    border:none;
+    border-radius:50px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+}
 
-        .btn { background: var(--primary); color: white; border: none; padding: 15px 40px; border-radius: 50px; cursor: pointer; font-size: 1.1rem; }
-        
-        .close-btn { margin-top: 30px; background: #555; padding: 10px 20px; border-radius: 20px; color: white; border: none; cursor: pointer; }
-    </style>
+/* Corner */
+.corner{
+    position:fixed;
+    bottom:10px;
+    right:15px;
+    color:#ff4d6d;
+}
+
+/* Glow */
+.glow{
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px red;}
+    to{ text-shadow:0 0 30px pink;}
+}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    font-size:20px;
+    animation:float 5s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-10vh);}
+}
+</style>
 </head>
+
 <body>
 
-    <div class="couple-names">Siyam + Anita</div>
+<!-- PAGE 1 -->
+<div id="page1">
+    <h1 id="title">Anita 💖</h1>
+    <p>You are my everything</p>
 
-    <section class="hero">
-        <h1 id="main-title">Anita</h1>
-        <p>Amar Prithibi</p>
-        <button class="btn" onclick="openMagicPage()">Click for Magic ✨</button>
-    </section>
+    <h2 id="counter">0%</h2>
+    <p>Amar jibone tomar jayga sob somoy 100% thakbe ❤️</p>
 
-    <div id="magic-page">
-        <div class="iloveyou-anim">I LOVE YOU, ANITA ❤️</div>
-        
-        <div class="poem" id="poem1">
-            "Tomar sathe bitao protiti khon,<br>
-            Amar kache jeno ek ekta shopon.<br>
-            Anita, tumi amar hridoyer spondon,<br>
-            Tomakei bhalobashi sara ti jibon."
-        </div>
+    <button class="btn" onclick="showLove()">Click for Magic ✨</button>
+</div>
 
-        <div class="poem" id="poem2">
-            "Mone pore jay oi misti hashi,<br>
-            Tomake ami koto bhalobashi.<br>
-            Siyam er jibone tumi ek prity,<br>
-            Tomay niyei amar joto sukher smriti."
-        </div>
+<!-- PAGE 2 -->
+<div id="page2">
+    <h1 class="glow">Black Love 😘</h1>
 
-        <div class="poem" id="poem3">
-            <strong>Amar Moner Kotha:</strong><br>
-            "Anita, tumi amar kache khub-i special. Tumi thakle amar sob kosto dur hoye jay. Ami chaitam amader ei bhalobasha sob somoy emon-i thakuk. Tumi amar protiti prarthonar ongsho."
-        </div>
+    <p style="max-width:500px;text-align:center;font-size:1.4rem;">
+        Anita, tumi amar moner shanti ❤️ <br>
+        Tumi amar sopno, amar sob kichu 💖 <br>
+        Tumi chara ami kichui na...
+    </p>
 
-        <button class="close-btn" onclick="closeMagicPage()">Back to Home</button>
-    </div>
+    <h1 class="glow">I LOVE YOU 💞</h1>
+</div>
 
-    <script>
-        function openMagicPage() {
-            const page = document.getElementById('magic-page');
-            page.style.display = 'flex';
-            
-            // GSAP Animations for poems
-            gsap.to(".poem", {
-                opacity: 1,
-                y: 0,
-                duration: 1.5,
-                stagger: 0.8, // One by one animation
-                ease: "power2.out"
-            });
+<div class="corner">Siyam + Anita 💖</div>
 
-            // Burst hearts
-            for(let i=0; i<20; i++) { createHeart(); }
-        }
+<script>
 
-        function closeMagicPage() {
-            document.getElementById('magic-page').style.display = 'none';
-        }
+// Title animation
+gsap.from("#title",{y:-50,opacity:0,duration:1.5});
 
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.style.position = 'fixed';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = '100vh';
-            heart.style.zIndex = '2000';
-            document.body.appendChild(heart);
+// Counter
+let count=0;
+let int=setInterval(()=>{
+    if(count>=100) clearInterval(int);
+    document.getElementById("counter").innerHTML=count+"%";
+    count++;
+},20);
 
-            gsap.to(heart, {
-                y: -window.innerHeight - 100,
-                x: (Math.random() - 0.5) * 200,
-                opacity: 0,
-                duration: 3,
-                onComplete: () => heart.remove()
-            });
-        }
-    </script>
+// Floating hearts
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.innerHTML="❤️";
+    h.className="heart";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+
+    setTimeout(()=>h.remove(),5000);
+},300);
+
+// Page switch animation
+function showLove(){
+    gsap.to("#page1",{y:"-100%",duration:1});
+    gsap.to("#page2",{y:"0%",duration:1});
+
+    // extra hearts burst
+    for(let i=0;i<20;i++){
+        let h=document.createElement("div");
+        h.innerHTML="💖";
+        h.style.position="fixed";
+        h.style.left="50%";
+        h.style.top="50%";
+        h.style.fontSize="20px";
+        document.body.appendChild(h);
+
+        gsap.to(h,{
+            x:(Math.random()-0.5)*500,
+            y:(Math.random()-0.5)*500,
+            opacity:0,
+            duration:2,
+            onComplete:()=>h.remove()
+        });
+    }
+}
+
+</script>
+
 </body>
 </html>
