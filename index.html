@@ -1,304 +1,306 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Queen Anita ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-<style>
-:root {
-    --primary-pink: #ff4d6d;
-    --soft-pink: #ffccd5;
-    --deep-pink: #c9184a;
-}
-
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #0a0a0a;
-    color: white;
-    overflow-x: hidden;
-}
-
-/* Page 1 - Original Style (Improved) */
-.page {
-    width: 100%;
-    position: relative;
-}
-
-.section {
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 50vh;
-}
-
-.title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.2rem;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.special-font {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.4rem;
-    color: var(--primary-pink);
-    text-align: center;
-}
-
-.card {
-    max-width: 520px;
-    width: 90%;
-    margin: 25px auto;
-    padding: 35px 25px;
-    border-radius: 28px;
-    background: rgba(255, 255, 255, 0.09);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    transition: transform 0.4s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-}
-
-.btn {
-    padding: 18px 55px;
-    font-size: 1.15rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 50px;
-    background: linear-gradient(45deg, #ff4d6d, #ff7a9e);
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
-    transition: all 0.4s;
-    margin-top: 30px;
-}
-
-.btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 12px 30px rgba(255, 77, 109, 0.7);
-}
-
-/* Page 2 - Much More Beautiful & Romantic */
-#page2 {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100vh;
-    background: radial-gradient(circle at center, #fff0f5 0%, #ff99b3 40%, #ff4d6d 100%);
-    color: #3a0f1f;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    z-index: 30;
-}
-
-#page2 .title {
-    font-size: 4.2rem;
-    color: #fff;
-    text-shadow: 0 0 20px rgba(255,255,255,0.9);
-    margin-bottom: 20px;
-}
-
-#page2 .card {
-    background: rgba(255,255,255,0.85);
-    color: #3a0f1f;
-    border: 2px solid #ff4d6d;
-    box-shadow: 0 10px 40px rgba(255, 77, 109, 0.4);
-}
-
-.glow {
-    text-shadow: 0 0 20px #ff4d6d, 0 0 30px #ff99b3;
-}
-
-/* Floating Elements */
-.heart, .petal, .kiss {
-    position: fixed;
-    pointer-events: none;
-    z-index: 15;
-    user-select: none;
-}
-
-@keyframes float {
-    0% { transform: translateY(110vh) rotate(0deg); opacity: 0.9; }
-    100% { transform: translateY(-20vh) rotate(380deg); opacity: 0; }
-}
-</style>
-</head>
-
-<body>
-
-<!-- ==================== PAGE 1 ==================== -->
-<div id="page1" class="page">
-
-    <div class="section">
-        <div class="title glow">Anita 💖</div>
-        <p class="special-font">You are my peace in this chaotic world.</p>
-    </div>
-
-    <div class="section">
-        <div class="title">Love Meter</div>
-        <div class="card">
-            <h1 id="counter" style="font-size:4.5rem; margin:0;">0%</h1>
-            <p>Tomar jonno amar valobasha unlimited… 100% o kom hoye jay ❤️</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="title">My Feelings</div>
-        <div class="card">
-            <p>
-                <b>Tumi amar sopno…</b><br> 
-                Jekhane sudhu tumi ar ami thaki.<br><br>
-                <b>Tumi amar moner shanti…</b><br>
-                Saradin jotoi kosto hok, tomar sathe kotha bolle sob thik hoye jay.<br><br>
-                <b>Tumi amar protita hashi ❤️</b>
-            </p>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="title">Chondo</div>
-        <div class="card">
-            <p class="special-font">
-                "Tumi chara din ta adho mone hoy,<br>  
-                Tumi thaklei sob kichu shundor lage ❤️"
-            </p>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="title">My Promise</div>
-        <div class="card">
-            <p>
-                I love you so much Anita 💖<br>  
-                Tumi amar jiboner shera paowa.<br>
-                Amar sobcheye special manus hoye thakbe sarajibon 💕
-            </p>
-        </div>
-
-        <button class="btn" onclick="goNext()">Open My Heart ✨</button>
-    </div>
-</div>
-
-<!-- ==================== BEAUTIFUL PAGE 2 ==================== -->
-<div id="page2">
-    <h1 class="title glow">Anita ❤️</h1>
-
-    <div class="card" style="max-width:520px;">
-        <p style="font-size:1.25rem; line-height:1.6;">
-            Tumi amar prithibir sobcheye shundor feeling 💖<br><br>
-            Amar protita nishwas e, protita chinta te <b>sudhu tomakei chai</b> ❤️
-        </p>
-    </div>
-
-    <div class="card" style="max-width:520px;">
-        <p style="font-size:1.2rem; line-height:1.6;">
-            Tumi amar sudhu valobasha na…<br>
-            Tumi amar <b>shanti, happiness, ar sobkichu</b> 🌸
-        </p>
-    </div>
-
-    <!-- New Dream Section -->
-    <div class="card" style="max-width:520px;">
-        <p style="font-size:1.25rem;">
-            <b>Tumar Jonno Sopno Dekhechi</b><br><br>
-            Raat e tomake niye shopno dekhi…<br>
-            Amra dujon mile hashi, ghuri, ar ekshathe thaki.<br>
-            Tumi amar queen, ami tomar king 💍<br>
-            Tomar sathe ekta shundor jibon gorte chai.
-        </p>
-    </div>
-
-    <h2 class="special-font glow" style="font-size:3rem; margin:25px 0 10px;">I LOVE YOU INFINITY 💞</h2>
-    <p style="font-size:1.1rem; color:#3a0f1f;">Tumi amar sob kichu… Amar dunia, amar shanti, amar bhalobasha 💕</p>
-
-    <div style="margin-top:30px; font-size:2.5rem;">
-        💋 ❤️ 🌹 💖 💕
-    </div>
-</div>
-
-<div class="corner" style="position:fixed; bottom:15px; right:20px; font-size:14px; opacity:0.8;">
-    Siyam ❤️ Anita
-</div>
-
-<script>
-// Love Counter
-let c = 0;
-const counter = document.getElementById("counter");
-const int = setInterval(() => {
-    if (c >= 100) {
-        counter.innerHTML = "∞%";
-        clearInterval(int);
-    } else {
-        counter.innerHTML = c + "%";
-        c++;
-    }
-}, 35);
-
-// Go to Page 2 with beautiful animation
-function goNext() {
-    const page2 = document.getElementById("page2");
-    page2.style.display = "flex";
-    
-    gsap.fromTo(page2, 
-        { y: "100%", opacity: 0 }, 
-        { y: "0%", opacity: 1, duration: 1.8, ease: "expo.inOut" }
-    );
-
-    // Animate cards
-    gsap.from(".card", { 
-        opacity: 0, 
-        y: 60, 
-        duration: 1.2, 
-        stagger: 0.3,
-        ease: "power2.out"
-    });
-}
-
-// Floating Hearts, Kisses & Petals
-function createFloatingElement(symbol) {
-    let el = document.createElement("div");
-    el.innerHTML = symbol;
-    el.style.position = "fixed";
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.fontSize = (Math.random() * 28 + 18) + "px";
-    el.style.opacity = Math.random() * 0.8 + 0.6;
-    el.style.zIndex = 15;
-    el.style.animation = `float ${Math.random() * 4 + 5}s linear forwards`;
-    document.body.appendChild(el);
-
-    setTimeout(() => el.remove(), 9000);
-}
-
-setInterval(() => {
-    createFloatingElement("💖");
-    createFloatingElement("💋");
-    createFloatingElement("🌸");
-    createFloatingElement("❤️");
-}, 280);
-
-// Add floating animation style
-const style = document.createElement("style");
-style.innerHTML = `
-    @keyframes float {
-        0% { transform: translateY(110vh) rotate(0deg); }
-        100% { transform: translateY(-30vh) rotate(420deg); }
-    }
-`;
-document.head.appendChild(style);
-</script>
-
-</body>
-</html>
+‎<!DOCTYPE html>
+‎<html lang="en">
+‎<head>
+‎<meta charset="UTF-8">
+‎<meta name="viewport" content="width=device-width, initial-scale=1.0">
+‎<title>Siyuu's ! Portfolio</title>
+‎
+‎<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+‎<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+‎<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+‎
+‎<style>
+‎:root{--red:#ff0000;}
+‎*{margin:0;padding:0;box-sizing:border-box}
+‎body{background:#000;color:#eee;font-family:Poppins;overflow-x:hidden}
+‎
+‎/* Horror BG */
+‎body::before{
+‎content:"";
+‎position:fixed;width:100%;height:100%;
+‎background:url('https://i.imgur.com/8Km9tLL.png');
+‎opacity:0.05;
+‎z-index:-2;
+‎}
+‎body::after{
+‎content:"";
+‎position:fixed;width:100%;height:100%;
+‎background:radial-gradient(circle,transparent 40%,black 100%);
+‎z-index:-1;
+‎}
+‎
+‎/* Loader */
+‎#loader{
+‎position:fixed;width:100%;height:100vh;background:#000;
+‎display:flex;flex-direction:column;justify-content:center;align-items:center;
+‎z-index:9999;
+‎}
+‎.spinner{
+‎width:60px;height:60px;border:6px solid #111;
+‎border-top:6px solid red;border-radius:50%;
+‎animation:spin 1s linear infinite;
+‎}
+‎.loading-text{
+‎margin-top:15px;color:red;font-family:Creepster;
+‎animation:flicker 1.5s infinite;
+‎}
+‎@keyframes spin{100%{transform:rotate(360deg)}}
+‎@keyframes flicker{50%{opacity:0.3}}
+‎
+‎/* Scroll bar */
+‎#scroll-bar{position:fixed;top:0;left:0;height:4px;background:red;width:0%}
+‎
+‎/* Particles */
+‎#particles-js{position:fixed;inset:0;z-index:-3}
+‎
+‎/* Hero */
+‎.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;transform:translateY(30px);transition:1s}
+‎.hero.show{opacity:1;transform:translateY(0);}
+‎.hero img{width:200px;border-radius:50%;border:3px solid red;box-shadow:0 0 40px red;transition:.5s}
+‎.hero img:hover{transform:scale(1.1);box-shadow:0 0 80px red,0 0 120px darkred}
+‎
+‎.logo{position:absolute;top:20px;left:20px;font-family:Creepster;font-size:40px;color:red;opacity:0;transform:translateX(-30px);transition:1s}
+‎.logo.show{opacity:1;transform:translateX(0);}
+‎.name{font-family:Creepster;font-size:50px;color:red;opacity:0;transition:1s;}
+‎.name.show{opacity:1;}
+‎.tag{color:#aaa;margin-top:10px;opacity:0;transition:1s;}
+‎.tag.show{opacity:1;}
+‎
+‎/* Cards */
+‎.section{max-width:900px;margin:60px auto;padding:20px}
+‎.card{
+‎  background:#0a0a0a;
+‎  padding:25px;
+‎  border-radius:15px;
+‎  border:1px solid #300;
+‎  box-shadow:0 0 20px #ff000033;
+‎  margin-bottom:30px;
+‎  opacity:0;
+‎  transform:translateY(30px);
+‎  transition:1s;
+‎}
+‎.card.show{opacity:1;transform:translateY(0);}
+‎
+‎/* Skills bars */
+‎.bar{height:12px;background:#111;border-radius:20px;margin-top:5px;overflow:hidden}
+‎.fill{height:100%;background:red}
+‎
+‎/* Projects */
+‎.project{padding:15px;margin:10px 0;background:#111;border-radius:10px;cursor:pointer;transition:.4s}
+‎.project:hover{background:#1a0000;transform:translateX(10px)}
+‎
+‎/* Socials */
+‎.socials{display:flex;justify-content:center;gap:25px;margin-top:20px}
+‎.socials i{font-size:28px;cursor:pointer;transition:.3s}
+‎.socials i:hover{color:red;transform:scale(1.2)}
+‎
+‎/* Badges */
+‎.badge{background:#1a0000;color:#ff4d4d;padding:5px 15px;border-radius:5px;font-size:14px;border:1px solid #400000;margin-right:5px}
+‎
+‎/* API PAGE */
+‎#api-page{display:none; padding:20px;}
+‎#api-page h1{text-align:center;font-family:Creepster;color:red;margin-bottom:30px;}
+‎.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+‎.api-card{background:#0a0a0a;border:1px solid #300;padding:15px;border-radius:10px;transition:.3s;}
+‎.api-card:hover{transform:scale(1.05);box-shadow:0 0 10px red}
+‎.api-card .name{color:#ff4d4d;font-size:18px;font-weight:bold;}
+‎.api-card .link{font-size:12px;color:#aaa;word-break:break-all;margin-top:5px;}
+‎.api-card button{margin-top:10px;padding:6px 12px;background:red;border:none;color:#fff;cursor:pointer;border-radius:5px}
+‎.back-btn{margin-bottom:20px;padding:8px 15px;background:red;color:#fff;cursor:pointer;border:none;border-radius:6px}
+‎
+‎audio{display:none}
+‎</style>
+‎</head>
+‎<body>
+‎
+‎<audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/387"></audio>
+‎
+‎<!-- Loader -->
+‎<div id="loader">
+‎<div class="spinner"></div>
+‎<div class="loading-text">LOADING...</div>
+‎</div>
+‎
+‎<div id="scroll-bar"></div>
+‎<div id="particles-js"></div>
+‎
+‎<!-- HERO -->
+‎<div class="hero" id="hero-section">
+‎<div class="logo">SIYUU</div>
+‎<img src="https://i.imgur.com/guUKCj0.jpeg">
+‎<div class="name">SHAHARIYA AHMMED SIYAM</div>
+‎<div class="tag" id="typing-text"></div>
+‎</div>
+‎
+‎<!-- MAIN SECTION -->
+‎<div class="section" id="main-section">
+‎
+‎<!-- SKILLS -->
+‎<div class="card">
+‎<h2>Skills</h2>
+‎<div style="margin-top:10px">
+‎<div>HTML</div>
+‎<div class="bar"><div class="fill" style="width:92%"></div></div>
+‎<small>Structure & layout build korte expert.<br>Responsive design e master.</small>
+‎</div>
+‎
+‎<div style="margin-top:10px">
+‎<div>CSS</div>
+‎<div class="bar"><div class="fill" style="width:88%"></div></div>
+‎<small>Modern UI & animation e strong.<br>Dark theme & hover effects pro.</small>
+‎</div>
+‎
+‎<div style="margin-top:10px">
+‎<div>JavaScript</div>
+‎<div class="bar"><div class="fill" style="width:90%"></div></div>
+‎<small>Dynamic system & bot logic.<br>Frontend interactivity master.</small>
+‎</div>
+‎
+‎<div style="margin-top:10px">
+‎<div>Node.js</div>
+‎<div class="bar"><div class="fill" style="width:85%"></div></div>
+‎<small>Backend & GoatBot developer.<br>Server & API integration expert.</small>
+‎</div>
+‎
+‎<div style="margin-top:10px">
+‎<div>Python</div>
+‎<div class="bar"><div class="fill" style="width:80%"></div></div>
+‎<small>Automation & API system build.<br>Data handling & scripting master.</small>
+‎</div>
+‎</div>
+‎
+‎<!-- Projects -->
+‎<div class="card">
+‎<h2>Projects</h2>
+‎<div class="project" onclick="openLink('https://github.com/siyuuu-x1/main_goatbot_v2')">Messenger GoatBot</div>
+‎<div class="project" onclick="showAPI()">ALL API</div>
+‎<div class="project" onclick="openLink('https://github.com/siyuuu-x1/Insta-chatbot-v2')">Instagram Bot</div>
+‎</div>
+‎
+‎<!-- Personal Info -->
+‎<div class="card" style="text-align:center">
+‎<h2>Personal Info</h2>
+‎<span class="badge">📍 Jamalpur</span>
+‎<span class="badge">🟢 Online</span>
+‎<span class="badge">💻 Coding...</span>
+‎<div class="socials">
+‎<i class="fa-brands fa-facebook-messenger" onclick="openLink('https://m.me/siyuuuuuuuuuuuuuuu')"></i>
+‎<i class="fa-brands fa-github" onclick="openLink('https://github.com/siyuuu-x1/Maiko-goatbot-v2')"></i>
+‎<i class="fa-brands fa-whatsapp" onclick="openLink('https://wa.me/8801603604722')"></i>
+‎</div>
+‎</div>
+‎
+‎</div>
+‎
+‎<!-- API PAGE -->
+‎<div id="api-page">
+‎<button class="back-btn" onclick="hideAPI()">⬅ Back</button>
+‎<h1>🔥 ALL API 🔥</h1>
+‎<div class="grid" id="api-container"></div>
+‎</div>
+‎
+‎<script>
+‎// Loader
+‎window.addEventListener("load",()=>{
+‎  setTimeout(()=>{
+‎    document.getElementById("loader").style.opacity="0";
+‎    setTimeout(()=>{loader.style.display="none"},500);
+‎    // show hero & cards animation
+‎    document.querySelector(".hero").classList.add("show");
+‎    document.querySelector(".logo").classList.add("show");
+‎    document.querySelector(".name").classList.add("show");
+‎    document.querySelector(".tag").classList.add("show");
+‎    document.querySelectorAll(".card").forEach((c,i)=>{
+‎      setTimeout(()=>{c.classList.add("show")}, i*200);
+‎    });
+‎  },800);
+‎});
+‎
+‎// Typing animation
+‎const text=" GoatBot Developer ⚡";
+‎let i=0;
+‎function typing(){
+‎if(i<text.length){
+‎document.getElementById("typing-text").innerHTML+=text.charAt(i);
+‎i++;setTimeout(typing,50);
+‎}}
+‎typing();
+‎
+‎// Scroll
+‎window.addEventListener('scroll',()=>{
+‎let s=document.documentElement.scrollTop;
+‎let h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+‎document.getElementById("scroll-bar").style.width=(s/h)*100+"%";
+‎});
+‎
+‎// Open Link
+‎function openLink(url){
+‎document.getElementById("clickSound").play();
+‎window.open(url,'_blank');
+‎}
+‎
+‎// Particles
+‎particlesJS("particles-js",{particles:{number:{value:80},color:{value:"#ff0000"},line_linked:{enable:true,color:"#ff0000"},move:{speed:1}}});
+‎
+‎// API Data
+‎const apiData={
+‎  anisearch:"https://xalman-anisearch-apis-s5yv.onrender.com",
+‎  album:"https://nx-album-apix.onrender.com",
+‎  font:"https://xalman-font-apis-dbv8.onrender.com",
+‎  cdp:"https://nx-cdp-apis-cqss.onrender.com",
+‎  quiz:"https://xalman-quiz-apis-6s9k.onrender.com",
+‎  math:"https://xalman-mathgame-apis.onrender.com",
+‎  meme:"https://nx-meme-apis.onrender.com",
+‎  autodl:"https://xalman-autodl-apis.onrender.com",
+‎  tikdl:"https://xalman-tikdl.onrender.com",
+‎  lyrics:"https://xalman-lyrics-apis.onrender.com",
+‎  flux:"https://xalman-flux-apis.onrender.com",
+‎  rbg:"https://xalman-removebg-apis.onrender.com",
+‎  "4k":"https://xalman-4k-apis.onrender.com",
+‎  imgbb:"https://xalman-imgbb-apis-8qnx.onrender.com",
+‎  freeimg:"https://xalman-freeimageupload-apis.onrender.com",
+‎  catbox:"https://xalman-catbox-apis.onrender.com",
+‎  ss:"https://xalman-screenshot-apis.onrender.com",
+‎  trans:"https://xalman-translate-apis.onrender.com",
+‎  mixmean:"https://xalman-emojimean-and-mix.onrender.com",
+‎  tm:"https://xalman-tempmail-apis.onrender.com",
+‎  chat:"https://xalman-aichat-apis.onrender.com",
+‎  pin:"https://xalman-pinterest-apis.onrender.com",
+‎  bomb:"https://xalman-bomber-jsaz.onrender.com",
+‎  prompt:"https://xalman-prompt-apis.onrender.com"
+‎};
+‎
+‎// Show API
+‎function showAPI(){
+‎document.getElementById("main-section").style.display="none";
+‎document.getElementById("api-page").style.display="block";
+‎
+‎const container=document.getElementById("api-container");
+‎container.innerHTML=""; // clear old
+‎
+‎for(let key in apiData){
+‎  let div=document.createElement("div");
+‎  div.className="api-card";
+‎  div.innerHTML=`<div class="name">${key}</div>
+‎  <div class="link">${apiData[key]}</div>
+‎  <button onclick="copyAPI('${key}')">Copy</button>`;
+‎  container.appendChild(div);
+‎}
+‎}
+‎
+‎// Hide API
+‎function hideAPI(){
+‎document.getElementById("api-page").style.display="none";
+‎document.getElementById("main-section").style.display="block";
+‎}
+‎
+‎// Copy API
+‎function copyAPI(id){
+‎navigator.clipboard.writeText(apiData[id]);
+‎alert(`Copied: ${apiData[id]}`);
+‎}
+‎</script>
+‎
+‎</body>
+‎</html>
+‎
